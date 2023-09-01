@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +15,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/froll/OneDrive/Документы/GitHub/Project-Poseidon/Project Poseidon/Assets/Scripts/Source/Battle Field/Grid.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/SecondPlayerTurn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" root0="FORCE_HIGHLIGHTING" />
