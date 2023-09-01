@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Source.Turn_State_Machine
 {
@@ -14,26 +15,30 @@ namespace Source.Turn_State_Machine
         /// </summary>
         private TurnState _currentState = null;
 
-        [SerializeField] private GameManager _gameManager = null;
+        [FormerlySerializedAs("_gameManager")] [SerializeField] private GameManager gameManager = null;
         
         private void OnValidate()
         {
-            _gameManager ??= GetComponent<GameManager>();
+            gameManager ??= GetComponent<GameManager>();
         }
 
         private void Start()
         {
-            _gameManager.TurnEnded += ChangeState;
+            gameManager.TurnEnded += ChangeState;
+            InitializeStates();
+            _currentState.Enter();
+        }
+
+        private void InitializeStates()
+        {
             var first = new FirstPlayerTurn();
             var second = new SecondPlayerTurn(first);
             first.ChangeNextState(second);
             _currentState = first;
-            _currentState.Enter();
         }
 
         private void Update()
         {
-            Debug.Log(_currentState.ToString());
             _currentState.LogicUpdate();
         }
 
