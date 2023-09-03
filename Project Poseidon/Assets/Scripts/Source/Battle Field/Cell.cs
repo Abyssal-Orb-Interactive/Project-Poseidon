@@ -1,3 +1,5 @@
+using System;
+
 namespace Source.Battle_Field
 {
     public class Cell : IReadonlyCell
@@ -9,7 +11,14 @@ namespace Source.Battle_Field
             return IsOpened;
         }
 
-        public void Open()
+        public bool TryOpen()
+        {
+            if (IsOpened) return false;
+            Open();
+            return true;
+        }
+        
+        private void Open()
         {
             IsOpened = true;
         }
