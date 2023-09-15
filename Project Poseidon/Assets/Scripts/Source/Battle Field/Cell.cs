@@ -1,5 +1,3 @@
-using System;
-
 namespace Source.Battle_Field
 {
     public class Cell : IReadonlyCell

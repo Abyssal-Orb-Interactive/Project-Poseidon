@@ -1,8 +1,7 @@
 using System;
-using System.Linq;
 using Source.Battle_Field;
+using Source.Graphics;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Grid = Source.Battle_Field.Grid;
 
 namespace Source
@@ -12,16 +11,15 @@ namespace Source
         private Grid _grid;
         public event Action TurnEnded;
 
+        [SerializeField] private GridVisualizer _gridVisualizer;
+
         private void Start()
         {
             _grid = new Grid(GridGenerator.CreateGrid());
+            _gridVisualizer.Initialize(_grid);
+            
             var opener = new Opener();
-            _grid.OpenCell(opener);
-
-            foreach (var cell in _grid.Cells)
-            {
-                Debug.Log(cell.GetStatus());
-            }
+            _grid.OpenCells(opener);
         }
 
         private void Update()

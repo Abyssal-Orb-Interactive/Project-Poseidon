@@ -6,7 +6,7 @@ namespace Source.Battle_Field
 {
     public class Grid
     {
-        private Dictionary<Vector2Int, Cell> _cells = null;
+        private readonly Dictionary<Vector2Int, Cell> _cells;
 
         public Grid(IDictionary<Vector2Int, Cell> cells)
         {
@@ -14,18 +14,17 @@ namespace Source.Battle_Field
         }
 
         public IEnumerable<IReadonlyCell> Cells => _cells.Values;
+        public IEnumerable<Vector2Int> Coords => _cells.Keys;
 
-        public void OpenCell(IOpener opener)
+        public void OpenCells(IOpener opener)
         {
             foreach (var coord in opener.GetOpenInformation())
             {
                 Debug.Log($"Coord {coord.x}{coord.y}");
-                if (!_cells.ContainsKey(coord))
-                    throw new InvalidOperationException(
-                        $"The grid does not contain a cell with these coordinates {coord.x}{coord.y}.");
                 
-                if (_cells[coord].TryOpen()) { }
-                else throw new InvalidOperationException("Cell already opened");
+                if (!_cells.ContainsKey(coord)) continue;
+
+                _cells[coord].TryOpen();
             }
         }
     }
