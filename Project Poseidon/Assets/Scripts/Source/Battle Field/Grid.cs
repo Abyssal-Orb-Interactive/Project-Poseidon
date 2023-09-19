@@ -20,7 +20,7 @@ namespace Source.Battle_Field
         {
             foreach (var coord in opener.GetOpenInformation())
             {
-                Debug.Log($"Coord {coord.x}{coord.y}");
+                Debug.Log($"Coord {coord.x}-{coord.y}");
                 
                 if (!_cells.ContainsKey(coord)) continue;
 

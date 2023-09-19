@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Grid = Source.Battle_Field.Grid;
 
 namespace Source.Graphics
@@ -8,6 +7,7 @@ namespace Source.Graphics
     {
         [SerializeField] private GameObject _cellPrefab;
         [SerializeField] private Transform _gridContainer;
+        [SerializeField] private Vector3 _fieldOffset = new(4.5f, 0, 4.5f);
 
         private Grid _logicalGrid;
         
@@ -20,15 +20,17 @@ namespace Source.Graphics
         public void Initialize(Grid grid)
         {
             _logicalGrid = grid;
-
+            
+            var cellRect = _cellPrefab.GetComponent<RectTransform>().rect;
+            var cellSize = new Vector2(cellRect.width, cellRect.height);
+            
             foreach (var coord in _logicalGrid.Coords)
             {
-                var cell = Instantiate(_cellPrefab, _gridContainer);
+                var cell = Instantiate(_cellPrefab,_gridContainer);
 
-                var cellX = coord.x * _cellPrefab.GetComponent<RectTransform>().rect.width;
-                var cellY = coord.y * _cellPrefab.GetComponent<RectTransform>().rect.height;
+                var cellPosition = new Vector2((coord.x - _fieldOffset.x) * cellSize.x, (coord.y - _fieldOffset.z) * cellSize.y);
 
-                cell.GetComponent<RectTransform>().anchoredPosition = new Vector2(cellX, cellY);
+                cell.GetComponent<RectTransform>().anchoredPosition = cellPosition;
                 
                 
             }
