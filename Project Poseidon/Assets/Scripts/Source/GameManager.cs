@@ -32,7 +32,8 @@ namespace Source
 
         private void Shoot()
         {
-            _grid.OpenCells(_shootHandler.GetOpener());
+            var opener = new Opener(_shootHandler.GetCoord());
+            _grid.OpenCells(opener);
         }
 
         private void OnDisable()

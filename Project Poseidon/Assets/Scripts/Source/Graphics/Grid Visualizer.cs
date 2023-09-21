@@ -15,6 +15,7 @@ namespace Source.Graphics
         {
             _gridContainer ??= GetComponentInParent<Transform>();
             //_cellPrefab
+            
         }
 
         public void Initialize(Grid grid)

@@ -2,6 +2,7 @@ namespace Source.Battle_Field
 {
     public interface IReadonlyCell
     {
-        public bool GetStatus();
+        public bool GetOpenStatus();
+        public bool GetShipStatus();
     }
 }
