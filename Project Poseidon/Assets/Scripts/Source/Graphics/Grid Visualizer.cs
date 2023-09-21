@@ -14,8 +14,6 @@ namespace Source.Graphics
         private void OnValidate()
         {
             _gridContainer ??= GetComponentInParent<Transform>();
-            //_cellPrefab
-            
         }
 
         public void Initialize(Grid grid)

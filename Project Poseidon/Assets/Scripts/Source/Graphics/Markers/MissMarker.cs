@@ -4,7 +4,7 @@ namespace Source.Graphics.Markers
 {
     public class MissMarker : Marker
     {
-        public MissMarker(Object marker) : base(marker)
+        public MissMarker(GameObject marker) : base(marker)
         {
         }
     }

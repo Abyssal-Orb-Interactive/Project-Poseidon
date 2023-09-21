@@ -1,6 +1,7 @@
 using System;
 using Source.Battle_Field;
 using Source.Graphics;
+using Source.Graphics.Markers;
 using Source.Input;
 using UnityEngine;
 using Grid = Source.Battle_Field.Grid;
@@ -15,12 +16,15 @@ namespace Source
         public event Action TurnEnded;
 
         [SerializeField] private GridVisualizer _gridVisualizer;
+        [SerializeField] private MarkersVisualizer _markersVisualizer;
         [SerializeField] private Camera _camera;
+        [SerializeField] private MarkersPack _pack;
 
         private void Start()
         {
             _grid = new Grid(GridGenerator.CreateGrid());
             _gridVisualizer.Initialize(_grid);
+            MarkerCreator.Initialize(_pack);
 
             _actions = new PlayerActions();
             _actions.Enable();
@@ -32,8 +36,9 @@ namespace Source
 
         private void Shoot()
         {
-            var opener = new Opener(_shootHandler.GetCoord());
-            _grid.OpenCells(opener);
+            var shootCoord = _shootHandler.GetCoord();
+            var opener = new Opener(shootCoord);
+            if(_grid.TryOpenCells(opener)) _markersVisualizer.PlaceMarker(shootCoord, TypeOfOpens.Miss); 
         }
 
         private void OnDisable()

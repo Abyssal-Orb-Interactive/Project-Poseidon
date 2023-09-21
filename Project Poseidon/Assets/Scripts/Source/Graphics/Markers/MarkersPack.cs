@@ -9,8 +9,8 @@ namespace Source.Graphics.Markers
         [SerializeField] private GameObject _hitMarker;
         [SerializeField] private GameObject _shipExplosionMarker;
 
-        public Object MissMarker => _missMarker;
-        public Object HitMarker => _hitMarker;
-        public Object ShipExplosionMarker => _shipExplosionMarker;
+        public GameObject MissMarker => _missMarker;
+        public GameObject HitMarker => _hitMarker;
+        public GameObject ShipExplosionMarker => _shipExplosionMarker;
     }
 }

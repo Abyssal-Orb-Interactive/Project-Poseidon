@@ -4,7 +4,7 @@ namespace Source.Graphics.Markers
 {
     public class ShipExplosionMarker : Marker
     {
-        public ShipExplosionMarker(Object marker) : base(marker)
+        public ShipExplosionMarker(GameObject marker) : base(marker)
         {
         }
     }

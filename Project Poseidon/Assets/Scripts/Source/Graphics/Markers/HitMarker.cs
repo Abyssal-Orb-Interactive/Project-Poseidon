@@ -4,7 +4,7 @@ namespace Source.Graphics.Markers
 {
     public class HitMarker : Marker
     {
-        public HitMarker(Object marker) : base(marker)
+        public HitMarker(GameObject marker) : base(marker)
         {
         }
     }

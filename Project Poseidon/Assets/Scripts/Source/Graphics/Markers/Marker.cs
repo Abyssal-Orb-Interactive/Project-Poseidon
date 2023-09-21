@@ -4,14 +4,14 @@ namespace Source.Graphics.Markers
 {
      public abstract class Marker
     {
-        protected readonly Object _marker;
+        protected readonly GameObject _marker;
 
-        protected Marker(Object marker)
+        protected Marker(GameObject marker)
         {
             _marker = marker;
         }
 
-        public object GetPlacemenOrigin()
+        public GameObject GetPlacemenOrigin()
         {
             return _marker;
         }

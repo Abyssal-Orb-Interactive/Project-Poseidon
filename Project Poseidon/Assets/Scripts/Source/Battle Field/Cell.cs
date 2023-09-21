@@ -2,29 +2,41 @@ namespace Source.Battle_Field
 {
     public class Cell : IReadonlyCell
     {
-         private bool IsOpened { get; set; }
-         private bool HasShip { get; set; }
+        private bool _isOpened;
+        private bool HasShip { get; set; }
     
         public bool GetOpenStatus()
         {
-            return IsOpened;
+            return _isOpened;
         }
 
         public bool GetShipStatus()
         {
             return HasShip;
         }
+
+        public bool TryClose()
+        {
+            if (!_isOpened) return false;
+            Close();
+            return true;
+        }
+        
+        private void Close()
+        {
+            _isOpened = false;
+        }
         
         public bool TryOpen()
         {
-            if (IsOpened) return false;
+            if (_isOpened) return false;
             Open();
             return true;
         }
         
         private void Open()
         {
-            IsOpened = true;
+            _isOpened = true;
         }
 
         public bool TryPlaceShip()
