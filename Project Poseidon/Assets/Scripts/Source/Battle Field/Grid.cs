@@ -38,5 +38,15 @@ namespace Source.Battle_Field
 
             return true;
         }
+
+        public bool TryPlaceShip(Vector2Int coord)
+        {
+            return _cells[coord].TryPlaceShip();
+        }
+
+        public bool HasShip(Vector2Int coord)
+        {
+            return _cells.ContainsKey(coord) && _cells[coord].GetShipStatus();
+        }
     }
 }

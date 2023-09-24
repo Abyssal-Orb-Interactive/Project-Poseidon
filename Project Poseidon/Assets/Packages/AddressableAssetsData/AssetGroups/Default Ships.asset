@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Default Ships
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Packed Assets
   m_Data:
     m_SerializedData: []
-  m_GUID: 607d2be2778eafa4f942935fd768cfea
-  m_SerializeEntries:
-  - m_GUID: 76ea5c47e39319f469e3785221cc5767
-    m_Address: Assets/Ships/Ship.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GUID: 34520b24a72ea4c4aadda4a9cf611468
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 55ac168e4ee11ea4db382cb4bed43436, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 32d2c1837fdf0ec45a4213b926122ca6, type: 2}
-    - {fileID: 11400000, guid: 7b7ab5bd9fefb4740bc2c068e8490125, type: 2}
+    - {fileID: 11400000, guid: 32fb8dad0acb54845aa1cb618e4eb62c, type: 2}
+    - {fileID: 11400000, guid: 6380086d76a26e641ad3ebc7f5639fcf, type: 2}

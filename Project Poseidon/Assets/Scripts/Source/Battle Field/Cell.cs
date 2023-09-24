@@ -3,7 +3,7 @@ namespace Source.Battle_Field
     public class Cell : IReadonlyCell
     {
         private bool _isOpened;
-        private bool HasShip { get; set; }
+        private bool _hasShip;
     
         public bool GetOpenStatus()
         {
@@ -12,7 +12,7 @@ namespace Source.Battle_Field
 
         public bool GetShipStatus()
         {
-            return HasShip;
+            return _hasShip;
         }
 
         public bool TryClose()
@@ -41,14 +41,14 @@ namespace Source.Battle_Field
 
         public bool TryPlaceShip()
         {
-            if (HasShip) return false;
+            if (_hasShip) return false;
             PlaceShip();
             return true;
         }
         
         private void PlaceShip()
         {
-            HasShip = true;
+            _hasShip = true;
         }
     }
 }

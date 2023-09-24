@@ -3,7 +3,9 @@ using Source.Battle_Field;
 using Source.Graphics;
 using Source.Graphics.Markers;
 using Source.Input;
+using Source.Ships;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Grid = Source.Battle_Field.Grid;
 
 namespace Source
@@ -17,14 +19,21 @@ namespace Source
 
         [SerializeField] private GridVisualizer _gridVisualizer;
         [SerializeField] private MarkersVisualizer _markersVisualizer;
+        [SerializeField] private ShipVisualizer _shipVisualizer;
         [SerializeField] private Camera _camera;
-        [SerializeField] private MarkersPack _pack;
+        [SerializeField] private MarkersPack _markersPack;
+        [SerializeField] private ShipsPack _shipsPack;
 
         private void Start()
         {
             _grid = new Grid(GridGenerator.CreateGrid());
             _gridVisualizer.Initialize(_grid);
-            MarkerCreator.Initialize(_pack);
+            var shipPlacer = new ShipPlacer(_grid);
+            ShipCreator.Initialize(_shipsPack);
+            shipPlacer.TryPlaceShip(new Vector2Int(0, 0), ShipType.TorpedoBoat);
+            MarkerCreator.Initialize(_markersPack);
+            
+            _shipVisualizer.VisualizeShips(shipPlacer.GetAllShips());
 
             _actions = new PlayerActions();
             _actions.Enable();
@@ -38,7 +47,8 @@ namespace Source
         {
             var shootCoord = _shootHandler.GetCoord();
             var opener = new Opener(shootCoord);
-            if(_grid.TryOpenCells(opener)) _markersVisualizer.PlaceMarker(shootCoord, TypeOfOpens.Miss); 
+            var opensTypeIdentifier = new OpensTypeIdentifier(_grid);
+            if(_grid.TryOpenCells(opener)) _markersVisualizer.PlaceMarker(shootCoord, opensTypeIdentifier.GetType(shootCoord, opener)); 
         }
 
         private void OnDisable()

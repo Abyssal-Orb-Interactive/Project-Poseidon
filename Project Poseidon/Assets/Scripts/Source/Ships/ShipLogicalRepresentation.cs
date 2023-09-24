@@ -7,23 +7,24 @@ namespace Source.Ships
     /// <summary>
     /// Represents a ship in the game.
     /// </summary>
-    public class ShipLogicalRepresentation
+    public class ShipLogicalRepresentation : IReadonlyLogicalRepresentation
     {
-        private static readonly int[,] RELATIVE_POSITIONS = {
+        private static readonly int[,] RELATIVE_POSITIONS =
+        {
             { -1, -1 }, { -1, 0 }, { -1, 1 },
-            { 0, -1 },             { 0, 1 },
+            { 0, -1 }, { 0, 1 },
             { 1, -1 }, { 1, 0 }, { 1, 1 }
         };
-        
-        private readonly Ship _ship;
-        
+
+        private Ship _ship;
+
         private Orientation _orientation = Orientation.Vertical;
         private Vector2Int _bowCoord;
         private int _hp;
-        
+
         private HashSet<Vector2Int> _segmentsCoords;
         private HashSet<Vector2Int> _restrictedAreaCoords;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ShipLogicalRepresentation"/> class.
         /// </summary>
@@ -32,23 +33,27 @@ namespace Source.Ships
         {
             _ship = ship;
             _hp = _ship.Size;
+            _segmentsCoords = new HashSet<Vector2Int>();
+            _restrictedAreaCoords = new HashSet<Vector2Int>();
         }
-        
+
         /// <summary>
         /// Gets the coordinates of the ship's segments.
         /// </summary>
         public IEnumerable<Vector2Int> SegmentsCoords => _segmentsCoords;
-        
+
         /// <summary>
         /// Gets the coordinates of the ship's restricted area.
         /// </summary>
         public IEnumerable<Vector2Int> RestrictedAreaCoords => _restrictedAreaCoords;
-        
+
         /// <summary>
         /// Gets the HP of the ship.
         /// </summary>
         public int HP => _hp;
-        
+
+        public Vector2Int BowCoord => _bowCoord;
+
         /// <summary>
         /// Sets the ship's initial position to the specified coordinate.
         /// </summary>
@@ -63,22 +68,22 @@ namespace Source.Ships
         {
             _segmentsCoords.Clear();
             _restrictedAreaCoords.Clear();
-            
+
             CalculateSegmentsCoords();
             CalculateRestrictedArea();
         }
-        
+
         private void CalculateSegmentsCoords()
         {
             _segmentsCoords = new HashSet<Vector2Int> { _bowCoord };
-            
+
             if (_orientation == Orientation.Horizontal)
             {
                 for (var i = 1; i < _ship.Size; i++)
                 {
                     var previousCoord = _segmentsCoords.Last();
                     _segmentsCoords.Add(new Vector2Int(previousCoord.x + 1, previousCoord.y));
-                }   
+                }
             }
             else
             {
@@ -100,10 +105,10 @@ namespace Source.Ships
             {
                 AddCoordinatesToRestrictedArea(in segment);
             }
-            
+
             _restrictedAreaCoords.ExceptWith(_segmentsCoords);
         }
-        
+
         private void AddCoordinatesToRestrictedArea(in Vector2Int segment)
         {
             for (var i = 0; i < RELATIVE_POSITIONS.GetLength(0); i++)
@@ -114,7 +119,7 @@ namespace Source.Ships
                 _restrictedAreaCoords.Add(coord);
             }
         }
-        
+
         /// <summary>
         ///  Rotates the ship, changing its orientation and recalculating coordinates accordingly.
         /// </summary>
@@ -122,6 +127,23 @@ namespace Source.Ships
         {
             _orientation++;
             RecalculateAllCoords();
+        }
+
+        public GameObject GetGraphicsRepresentation()
+        {
+            return _ship.ShipPrefab;
+        }
+
+        public int GetMaxNumberOfShips()
+        {
+            return _ship.MaxNumberOfShipsOfThisType;
+        }
+
+        public void Destruct()
+        {
+            _segmentsCoords = null;
+            _restrictedAreaCoords = null;
+            _ship = null;
         }
     }
 }

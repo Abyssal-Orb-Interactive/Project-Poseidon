@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49261fe8de44df8419a25b74c579df2b, type: 3}
-  m_Name: Battleship
+  m_Name: Destroyer
   m_EditorClassIdentifier: 
-  _size: 1
-  _shipPrefab: {fileID: 0}
+  _size: 2
+  _maxNumberOfShipsOfThisType: 2
+  _shipPrefab: {fileID: 696008408963237129, guid: 7a06353fdc044a64f993660de9b822c8,
+    type: 3}
