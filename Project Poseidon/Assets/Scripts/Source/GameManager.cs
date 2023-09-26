@@ -28,8 +28,9 @@ namespace Source
         {
             _grid = new Grid(GridGenerator.CreateGrid());
             _gridVisualizer.Initialize(_grid);
-            var shipPlacer = new ShipPlacer(_grid);
             ShipCreator.Initialize(_shipsPack);
+            var shipPlacer = new ShipPlacer(_grid);
+           
             shipPlacer.TryPlaceShip(new Vector2Int(0, 0), ShipType.TorpedoBoat);
             MarkerCreator.Initialize(_markersPack);
             

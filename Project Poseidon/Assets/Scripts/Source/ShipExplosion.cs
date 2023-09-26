@@ -6,9 +6,17 @@ namespace Source
 {
     public class ShipExplosion : IOpener
     {
+        private List<Vector2Int> _explosionZone;
+
+        public ShipExplosion(IEnumerable<Vector2Int> explosionZone)
+        {
+            _explosionZone = new List<Vector2Int>(explosionZone);
+        }
+        
+        
         public IEnumerable<Vector2Int> GetOpenInformation()
         {
-            throw new System.NotImplementedException();
+            return _explosionZone;
         }
     }
 }

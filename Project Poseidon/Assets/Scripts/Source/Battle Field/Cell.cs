@@ -50,5 +50,11 @@ namespace Source.Battle_Field
         {
             _hasShip = true;
         }
+
+        public void Clear()
+        {
+            _hasShip = false;
+            _isOpened = false;
+        }
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using Source.Battle_Field;
 using UnityEngine;
+using Grid = Source.Battle_Field.Grid;
 
 namespace Source.Ships
 {
@@ -21,9 +23,12 @@ namespace Source.Ships
         private Orientation _orientation = Orientation.Vertical;
         private Vector2Int _bowCoord;
         private int _hp;
-
+        private Grid _grid;
+        
         private HashSet<Vector2Int> _segmentsCoords;
         private HashSet<Vector2Int> _restrictedAreaCoords;
+
+        public event Explosion OnExplosion;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ShipLogicalRepresentation"/> class.
@@ -58,8 +63,10 @@ namespace Source.Ships
         /// Sets the ship's initial position to the specified coordinate.
         /// </summary>
         /// <param name="bowCoord">The coordinate of the ship's bow.</param>
-        public void SetPosition(Vector2Int bowCoord)
+        /// <param name="grid">The grid where ship placed</param>
+        public void SetPosition(Vector2Int bowCoord, Grid grid)
         {
+            _grid = grid;
             _bowCoord = bowCoord;
             RecalculateAllCoords();
         }
@@ -145,5 +152,21 @@ namespace Source.Ships
             _restrictedAreaCoords = null;
             _ship = null;
         }
+
+        public void TakeHit(IOpener hitter)
+        {
+            _hp--;
+            if (_hp > 0) return;
+            
+            OnExplosion!.Invoke();
+            OnExplosion = null;
+        }
+
+        public ShipExplosion GetExplosionZoneOpener()
+        {
+            return new ShipExplosion(_restrictedAreaCoords);
+        }
     }
+    
+    public delegate void Explosion();
 }

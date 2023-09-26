@@ -18,12 +18,15 @@ namespace Source.Ships
             _grid = grid;
         }
 
-        public bool TryPlaceShip(Vector2Int coord, ShipType type)
+        public bool TryPlaceShip(Vector2Int bowCoord, ShipType type)
         {
-            if (_ships.Any(ship1 =>
-                    ship1.RestrictedAreaCoords.Contains(coord))) return false;
-            
             var ship = ShipCreator.Create(type);
+
+            if (_ships.Any(ship1 => ship.SegmentsCoords.Any(segment => ship1.RestrictedAreaCoords.Contains(segment))))
+            {
+                return false;
+            }
+            
             if(!_shipsLimits.ContainsKey(type)) _shipsLimits.Add(type, ship.GetMaxNumberOfShips());
             if (_shipsLimits[type] == 0)
             {
@@ -35,9 +38,9 @@ namespace Source.Ships
 
             _shipsLimits[type]--;
 
-            var result = _grid.TryPlaceShip(coord);
+            var result = _grid.TryPlaceShip(ship.SegmentsCoords);
 
-            if (result) ship.SetPosition(coord);
+            if (result) ship.SetPosition(bowCoord, _grid);
             else
             {
                 _shipsLimits[type]++;

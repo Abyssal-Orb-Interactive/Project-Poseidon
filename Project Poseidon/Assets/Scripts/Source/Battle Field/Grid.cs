@@ -23,6 +23,7 @@ namespace Source.Battle_Field
 
                 if (_cells.ContainsKey(coord) && _cells[coord].TryOpen())
                 {
+                    if(_cells[coord].GetShipStatus()) _cells[coord].Ta
                     Debug.Log($"Coord {coord.x}-{coord.y}");
                     continue;
                 }
@@ -39,9 +40,26 @@ namespace Source.Battle_Field
             return true;
         }
 
-        public bool TryPlaceShip(Vector2Int coord)
+        public bool TryPlaceShip(IEnumerable<Vector2Int> coords)
         {
-            return _cells[coord].TryPlaceShip();
+            var result = true;
+            foreach (var coord in coords)
+            {
+                result = _cells[coord].TryPlaceShip();
+                
+                if (result) continue;
+                
+                foreach (var coord1 in coords)
+                {
+                    _cells[coord1].Clear();
+                }
+                    
+                break;
+            }
+
+            
+            
+            return result;
         }
 
         public bool HasShip(Vector2Int coord)
