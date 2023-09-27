@@ -1,9 +1,11 @@
+using Source.Ships;
+
 namespace Source.Battle_Field
 {
     public class Cell : IReadonlyCell
     {
         private bool _isOpened;
-        private bool _hasShip;
+        private ShipLogicalRepresentation _ship;
     
         public bool GetOpenStatus()
         {
@@ -12,7 +14,7 @@ namespace Source.Battle_Field
 
         public bool GetShipStatus()
         {
-            return _hasShip;
+            return _ship != null;
         }
 
         public bool TryClose()
@@ -39,22 +41,27 @@ namespace Source.Battle_Field
             _isOpened = true;
         }
 
-        public bool TryPlaceShip()
+        public bool TryPlaceShip(ShipLogicalRepresentation ship)
         {
-            if (_hasShip) return false;
-            PlaceShip();
+            if (GetShipStatus()) return false;
+            PlaceShip(ship);
             return true;
         }
         
-        private void PlaceShip()
+        private void PlaceShip(ShipLogicalRepresentation ship)
         {
-            _hasShip = true;
+            _ship = ship;
         }
 
         public void Clear()
         {
-            _hasShip = false;
+            _ship = null;
             _isOpened = false;
+        }
+
+        public ShipLogicalRepresentation GetShip()
+        {
+            return _ship;
         }
     }
 }

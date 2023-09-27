@@ -37,9 +37,9 @@ namespace Source.Ships
             _ships.Add(ship);
 
             _shipsLimits[type]--;
-
-            var result = _grid.TryPlaceShip(ship.SegmentsCoords);
-
+            
+            ship.SetPosition(bowCoord, _grid);
+            var result = _grid.TryPlaceShip(ship.SegmentsCoords, ship);
             if (result) ship.SetPosition(bowCoord, _grid);
             else
             {

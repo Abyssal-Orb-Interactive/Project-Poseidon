@@ -79,7 +79,7 @@ namespace Source.Ships
             CalculateSegmentsCoords();
             CalculateRestrictedArea();
         }
-
+        
         private void CalculateSegmentsCoords()
         {
             _segmentsCoords = new HashSet<Vector2Int> { _bowCoord };
@@ -151,6 +151,7 @@ namespace Source.Ships
             _segmentsCoords = null;
             _restrictedAreaCoords = null;
             _ship = null;
+            OnExplosion = null;
         }
 
         public void TakeHit(IOpener hitter)
