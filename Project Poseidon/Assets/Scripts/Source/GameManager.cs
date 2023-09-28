@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
 using Source.Battle_Field;
 using Source.Graphics;
 using Source.Graphics.Markers;
 using Source.Input;
 using Source.Ships;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Grid = Source.Battle_Field.Grid;
 
 namespace Source
@@ -15,6 +15,7 @@ namespace Source
         private Grid _grid;
         private PlayerActions _actions;
         private ShootHandler _shootHandler;
+        private OpensTypeIdentifier _opensTypeIdentifier;
         public event Action TurnEnded;
 
         [SerializeField] private GridVisualizer _gridVisualizer;
@@ -27,11 +28,13 @@ namespace Source
         private void Start()
         {
             _grid = new Grid(GridGenerator.CreateGrid());
+            _grid.ShipExplose += VisualizeExplosionMarkers;
             _gridVisualizer.Initialize(_grid);
+            _opensTypeIdentifier = new OpensTypeIdentifier(_grid);
             ShipCreator.Initialize(_shipsPack);
             var shipPlacer = new ShipPlacer(_grid);
            
-            shipPlacer.TryPlaceShip(new Vector2Int(0, 0), ShipType.TorpedoBoat);
+            shipPlacer.TryPlaceShip(new Vector2Int(5, 5), ShipType.TorpedoBoat);
             MarkerCreator.Initialize(_markersPack);
             
             _shipVisualizer.VisualizeShips(shipPlacer.GetAllShips());
@@ -48,10 +51,16 @@ namespace Source
         {
             var shootCoord = _shootHandler.GetCoord();
             var opener = new Opener(shootCoord);
-            var opensTypeIdentifier = new OpensTypeIdentifier(_grid);
-            if(_grid.TryOpenCells(opener)) _markersVisualizer.PlaceMarker(shootCoord, opensTypeIdentifier.GetType(shootCoord, opener)); 
+            if(_grid.TryOpenCells(opener)) _markersVisualizer.PlaceMarker(shootCoord, _opensTypeIdentifier.GetType(shootCoord, opener)); 
         }
 
+        private void VisualizeExplosionMarkers()
+        {
+            var opener = _grid.GetExplosion();
+            var coords = (IReadOnlyList<Vector2Int>)opener.GetOpenInformation();
+            if(_markersVisualizer != null) _markersVisualizer.PlaceMarkers(coords, (IReadOnlyList<TypeOfOpens>)_opensTypeIdentifier.GetTypes(coords, opener));
+        }
+        
         private void OnDisable()
         {
             _shootHandler.Disable();

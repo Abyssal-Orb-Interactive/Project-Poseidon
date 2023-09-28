@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/IReadonlyLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/IReadonlyLogicalRepresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Apps\Unity3D\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -85,7 +85,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Apps\Unity3D\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -136,6 +136,7 @@
       <workItem from="1695295710087" duration="13943000" />
       <workItem from="1695660017084" duration="4172000" />
       <workItem from="1695725276803" duration="5106000" />
+      <workItem from="1695883520110" duration="1272000" />
     </task>
     <servers />
   </component>

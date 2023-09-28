@@ -8,13 +8,25 @@ namespace Source.Battle_Field
     public class Grid
     {
         private readonly Dictionary<Vector2Int, Cell> _cells;
+        private ShipExplosion _explosion;
+        private bool _isExplosionReady;
 
         public Grid(IDictionary<Vector2Int, Cell> cells)
         {
             _cells = new Dictionary<Vector2Int, Cell>(cells);
-            
+            _isExplosionReady = false;
         }
 
+        public event Explosion ShipExplose;
+
+        public IOpener GetExplosion()
+        {
+            if (!_isExplosionReady) throw new InvalidOperationException("Explosion info is not actual.");
+
+            _isExplosionReady = false;
+            return _explosion;
+        }
+        
         public IEnumerable<IReadonlyCell> Cells => _cells.Values;
         public IEnumerable<Vector2Int> Coords => _cells.Keys;
 
@@ -48,7 +60,6 @@ namespace Source.Battle_Field
             foreach (var coord in coords)
             {
                 result = _cells[coord].TryPlaceShip(ship);
-                Debug.Log(result);
                 if (result)
                 {
                     ship.OnExplosion += () => { Explosion(ship); };
@@ -71,8 +82,10 @@ namespace Source.Battle_Field
 
         private void Explosion(IReadonlyLogicalRepresentation ship)
         {
-            if(TryOpenCells(ship.GetExplosionZoneOpener())) Debug.Log("Ship Destroyed");
-            
+            _explosion = ship.GetExplosionZoneOpener();
+            _isExplosionReady = true;
+            ShipExplose!.Invoke();
+
         }
         
         public bool HasShip(Vector2Int coord)

@@ -21,7 +21,7 @@ namespace Source.Ships
                 var prefab = ship.GetGraphicsRepresentation();
                 foreach (var coord in ship.SegmentsCoords)
                 {
-                    Instantiate(prefab, new Vector3(coord.x + 4f, 0, coord.y + 4f), Quaternion.identity, _shipHolder);
+                    Instantiate(prefab, new Vector3(coord.x * 10f + 5f, 0, coord.y * 10f + 5f), Quaternion.identity, _shipHolder);
                 }
             }
         }
