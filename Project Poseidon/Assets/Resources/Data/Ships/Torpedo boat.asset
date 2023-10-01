@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Torpedo boat
   m_EditorClassIdentifier: 
   _size: 1
-  _maxNumberOfShipsOfThisType: 4
+  _shipPower: 1
   _shipPrefab: {fileID: 696008408963237129, guid: 7a06353fdc044a64f993660de9b822c8,
     type: 3}

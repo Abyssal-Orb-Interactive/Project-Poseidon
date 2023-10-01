@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cruiser
   m_EditorClassIdentifier: 
   _size: 3
-  _maxNumberOfShipsOfThisType: 2
+  _shipPower: 3
+  _type: 2
   _shipPrefab: {fileID: 696008408963237129, guid: 7a06353fdc044a64f993660de9b822c8,
     type: 3}

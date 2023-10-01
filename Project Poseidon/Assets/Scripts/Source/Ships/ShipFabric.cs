@@ -2,7 +2,7 @@ using System;
 
 namespace Source.Ships
 {
-    public static class ShipCreator
+    public static class ShipFabric
     {
         private static ShipsPack _pack;
 

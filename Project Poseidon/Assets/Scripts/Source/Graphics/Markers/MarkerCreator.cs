@@ -9,30 +9,19 @@ namespace Source.Graphics.Markers
 
         public static void Initialize(MarkersPack pack)
         {
-            _pack = pack;
+            _pack = pack ? pack : throw new ArgumentNullException(nameof(pack));
         }
         
-        public static Marker Create(TypeOfOpens type)
+        public static Marker Create(OpenType openType, MarkersPack pack = null)
         {
-            if (_pack == null) throw new InvalidOperationException("Before create markers, you must initialize markers pack");
+            pack ??= _pack;
             
-            return type switch
+            return openType switch
             {
-                TypeOfOpens.Miss => new MissMarker(_pack.MissMarker),
-                TypeOfOpens.Hit => new HitMarker(_pack.HitMarker),
-                TypeOfOpens.ShipExplosion => new ShipExplosionMarker(_pack.ShipExplosionMarker),
-                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
-            };
-        }
-
-        public static Marker CreateFromPack(TypeOfOpens type, MarkersPack pack)
-        {
-            return type switch
-            {
-                TypeOfOpens.Miss => new MissMarker(pack.MissMarker),
-                TypeOfOpens.Hit => new HitMarker(pack.HitMarker),
-                TypeOfOpens.ShipExplosion => new ShipExplosionMarker(pack.ShipExplosionMarker),
-                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+                OpenType.Miss => new MissMarker(pack.MissMarker),
+                OpenType.Hit => new HitMarker(pack.HitMarker),
+                OpenType.ShipExplosion => new ShipExplosionMarker(pack.ShipExplosionMarker),
+                _ => throw new ArgumentOutOfRangeException(nameof(openType), openType, null)
             };
         }
     }

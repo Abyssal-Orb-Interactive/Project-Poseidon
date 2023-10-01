@@ -1,116 +1,106 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Source.Battle_Field;
 using UnityEngine;
-using Grid = Source.Battle_Field.Grid;
 
 namespace Source.Ships
 {
-    /// <summary>
-    /// Represents a ship in the game.
-    /// </summary>
     public class ShipLogicalRepresentation : IReadonlyLogicalRepresentation
     {
-        private static readonly int[,] RELATIVE_POSITIONS =
+        private static readonly (int, int)[] RelativePositions =
         {
-            { -1, -1 }, { -1, 0 }, { -1, 1 },
-            { 0, -1 }, { 0, 1 },
-            { 1, -1 }, { 1, 0 }, { 1, 1 }
+            (-1, -1), (-1, 0), (-1, 1),
+            (0, -1), (0, 1),
+            (1, -1), (1, 0), (1, 1)
         };
-
+       
         private Ship _ship;
-
-        private Orientation _orientation = Orientation.Vertical;
-        private Vector2Int _bowCoord;
-        private int _hp;
-        private Grid _grid;
-        
         private HashSet<Vector2Int> _segmentsCoords;
         private HashSet<Vector2Int> _restrictedAreaCoords;
 
-        public event Explosion OnExplosion;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ShipLogicalRepresentation"/> class.
-        /// </summary>
-        /// <param name="ship">The ship data.</param>
+        public event ExplosionContext Explosion;
+        
         public ShipLogicalRepresentation(Ship ship)
         {
-            _ship = ship;
-            _hp = _ship.Size;
+            _ship = ship ? ship : throw new ArgumentNullException(nameof(ship));
+            HealthPoints = _ship.Size;
             _segmentsCoords = new HashSet<Vector2Int>();
             _restrictedAreaCoords = new HashSet<Vector2Int>();
+            BowCoord = Vector2Int.zero;
         }
-
-        /// <summary>
-        /// Gets the coordinates of the ship's segments.
-        /// </summary>
+        
         public IEnumerable<Vector2Int> SegmentsCoords => _segmentsCoords;
-
-        /// <summary>
-        /// Gets the coordinates of the ship's restricted area.
-        /// </summary>
         public IEnumerable<Vector2Int> RestrictedAreaCoords => _restrictedAreaCoords;
-
-        /// <summary>
-        /// Gets the HP of the ship.
-        /// </summary>
-        public int HP => _hp;
-
-        public Vector2Int BowCoord => _bowCoord;
-
-        /// <summary>
-        /// Sets the ship's initial position to the specified coordinate.
-        /// </summary>
-        /// <param name="bowCoord">The coordinate of the ship's bow.</param>
-        /// <param name="grid">The grid where ship placed</param>
-        public void SetPosition(Vector2Int bowCoord, Grid grid)
+        public int HealthPoints { get; private set; }
+        public Vector2Int BowCoord { get; private set; }
+        public Orientation Orientation { get; set; } = Orientation.Vertical;
+        
+        public void SetPosition(Vector2Int bowCoord)
         {
-            _grid = grid;
-            _bowCoord = bowCoord;
+            BowCoord = bowCoord;
             RecalculateAllCoords();
         }
-
+        
+        public void Rotate()
+        {
+            Orientation = Orientation == Orientation.VerticalReversed ? Orientation.Horizontal : Orientation + 1;
+            RecalculateAllCoords();
+        }
+        
+        public GameObject GetGraphicsRepresentation()
+        {
+            return _ship.ShipPrefab;
+        }
+        
+        public void TakeHit()
+        {
+            HealthPoints--;
+            
+            if (HealthPoints > 0) return;
+            
+            Explosion!.Invoke();
+            Destroy();
+        }
+        
+        public ShipExplosion GetExplosionZoneOpener()
+        {
+            return new ShipExplosion(_restrictedAreaCoords);
+        }
+        
+        public void Destroy()
+        {
+            _segmentsCoords = null;
+            _restrictedAreaCoords = null;
+            _ship = null;
+            Explosion = null;
+        }
+        
         private void RecalculateAllCoords()
         {
             _segmentsCoords.Clear();
             _restrictedAreaCoords.Clear();
-
             CalculateSegmentsCoords();
             CalculateRestrictedArea();
         }
         
         private void CalculateSegmentsCoords()
         {
-            _segmentsCoords = new HashSet<Vector2Int> { _bowCoord };
-
-            if (_orientation == Orientation.Horizontal)
+            _segmentsCoords.Add(BowCoord);
+            var previousCoord = _segmentsCoords.Last();
+            
+            var (dx, dy) = GetRelativePosition(1);
+            for (var i = 1; i < _ship.Size; i++)
             {
-                for (var i = 1; i < _ship.Size; i++)
-                {
-                    var previousCoord = _segmentsCoords.Last();
-                    _segmentsCoords.Add(new Vector2Int(previousCoord.x + 1, previousCoord.y));
-                }
-            }
-            else
-            {
-                for (var i = 1; i < _ship.Size; i++)
-                {
-                    var previousCoord = _segmentsCoords.Last();
-                    _segmentsCoords.Add(new Vector2Int(previousCoord.x, previousCoord.y + 1));
-                }
+                _segmentsCoords.Add(new Vector2Int(previousCoord.x + dx, previousCoord.y + dy));
+                previousCoord = _segmentsCoords.Last();
             }
         }
 
         private void CalculateRestrictedArea()
         {
-            if (_segmentsCoords == null) CalculateSegmentsCoords();
-
-            _restrictedAreaCoords = new HashSet<Vector2Int>();
-
-            foreach (var segment in _segmentsCoords!)
+            foreach (var segment in _segmentsCoords)
             {
-                AddCoordinatesToRestrictedArea(in segment);
+                AddCoordinatesToRestrictedArea(segment);
             }
 
             _restrictedAreaCoords.ExceptWith(_segmentsCoords);
@@ -118,56 +108,39 @@ namespace Source.Ships
 
         private void AddCoordinatesToRestrictedArea(in Vector2Int segment)
         {
-            for (var i = 0; i < RELATIVE_POSITIONS.GetLength(0); i++)
+            foreach (var (dx, dy) in RelativePositions)
             {
-                var dx = RELATIVE_POSITIONS[i, 0];
-                var dy = RELATIVE_POSITIONS[i, 1];
                 var coord = new Vector2Int(segment.x + dx, segment.y + dy);
                 _restrictedAreaCoords.Add(coord);
             }
         }
-
-        /// <summary>
-        ///  Rotates the ship, changing its orientation and recalculating coordinates accordingly.
-        /// </summary>
-        public void Rotate()
+        
+        private (int, int) GetRelativePosition(int index)
         {
-            _orientation++;
-            RecalculateAllCoords();
-        }
-
-        public GameObject GetGraphicsRepresentation()
-        {
-            return _ship.ShipPrefab;
-        }
-
-        public int GetMaxNumberOfShips()
-        {
-            return _ship.MaxNumberOfShipsOfThisType;
-        }
-
-        public void Destruct()
-        {
-            _segmentsCoords = null;
-            _restrictedAreaCoords = null;
-            _ship = null;
-            OnExplosion = null;
-        }
-
-        public void TakeHit(IOpener hitter)
-        {
-            _hp--;
-            if (_hp > 0) return;
-            
-            OnExplosion!.Invoke();
-            OnExplosion = null;
-        }
-
-        public ShipExplosion GetExplosionZoneOpener()
-        {
-            return new ShipExplosion(_restrictedAreaCoords);
+            int dx, dy;
+            switch (Orientation)
+            {
+                case Orientation.Horizontal:
+                    dx = index;
+                    dy = 0;
+                    break;
+                case Orientation.Vertical:
+                    dx = 0;
+                    dy = index;
+                    break;
+                case Orientation.HorizontalReversed:
+                    dx = -index;
+                    dy = 0;
+                    break;
+                case Orientation.VerticalReversed:
+                    dx = 0;
+                    dy = -index;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(Orientation));
+            }
+            return (dx, dy);
         }
     }
-    
-    public delegate void Explosion();
+    public delegate void ExplosionContext();
 }

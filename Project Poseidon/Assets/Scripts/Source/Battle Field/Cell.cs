@@ -4,64 +4,39 @@ namespace Source.Battle_Field
 {
     public class Cell : IReadonlyCell
     {
-        private bool _isOpened;
-        private ShipLogicalRepresentation _ship;
-    
-        public bool GetOpenStatus()
-        {
-            return _isOpened;
-        }
+        public bool IsOpened { get; private set; }
+        public IReadonlyLogicalRepresentation Ship { get; private set; }
 
-        public bool GetShipStatus()
-        {
-            return _ship != null;
-        }
+        public bool HasShip => Ship != null;
 
-        public bool TryClose()
-        {
-            if (!_isOpened) return false;
-            Close();
-            return true;
-        }
-        
-        private void Close()
-        {
-            _isOpened = false;
-        }
-        
         public bool TryOpen()
         {
-            if (_isOpened) return false;
+            if (IsOpened) return false;
             Open();
             return true;
         }
         
         private void Open()
         {
-            _isOpened = true;
+            IsOpened = true;
         }
 
-        public bool TryPlaceShip(ShipLogicalRepresentation ship)
+        public bool TryPlaceShip(IReadonlyLogicalRepresentation ship)
         {
-            if (GetShipStatus()) return false;
+            if (HasShip) return false;
             PlaceShip(ship);
             return true;
         }
         
-        private void PlaceShip(ShipLogicalRepresentation ship)
+        private void PlaceShip(IReadonlyLogicalRepresentation ship)
         {
-            _ship = ship;
+            Ship = ship;
         }
 
         public void Clear()
         {
-            _ship = null;
-            _isOpened = false;
-        }
-
-        public ShipLogicalRepresentation GetShip()
-        {
-            return _ship;
+            Ship = null;
+            IsOpened = false;
         }
     }
 }

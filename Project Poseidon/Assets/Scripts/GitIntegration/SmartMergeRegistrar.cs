@@ -9,8 +9,8 @@ namespace GitIntegration
     public class SmartMergeRegistrar
     {
         private const string SmartMergeRegistrarEditorPrefsKey = "smart_merge_installed";
-        private const int Version = 1;
-        private static readonly string _versionKey = $"{Version}_{Application.unityVersion}";
+        private const int VERSION = 1;
+        private static readonly string _versionKey = $"{VERSION}_{Application.unityVersion}";
 
         private static string ExecuteGitWithParams(string param)
         {

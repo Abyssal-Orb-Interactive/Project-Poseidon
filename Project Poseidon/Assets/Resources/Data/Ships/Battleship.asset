@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Battleship
   m_EditorClassIdentifier: 
   _size: 4
-  _maxNumberOfShipsOfThisType: 1
+  _shipPower: 4
+  _type: 3
   _shipPrefab: {fileID: 696008408963237129, guid: 7a06353fdc044a64f993660de9b822c8,
     type: 3}

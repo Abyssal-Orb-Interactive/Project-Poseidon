@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: ShipPack
   m_EditorClassIdentifier: 
   _torpedoBoat: {fileID: 11400000, guid: 76ea5c47e39319f469e3785221cc5767, type: 2}
-  _maxNumberOfTorpedoBoats: 4
   _destroyer: {fileID: 11400000, guid: 778308e7c833a164b846df7ef6f44ac6, type: 2}
-  _maxNumberOfDestroyers: 3
   _cruiser: {fileID: 11400000, guid: 9a7b073af4220f84f8e35c9259da3956, type: 2}
-  _maxNumberOfCruisers: 2
   _battleship: {fileID: 11400000, guid: a098c8dfa81e07f4db484f9b6c3b15d9, type: 2}
-  _maxNumberOfBattleships: 1

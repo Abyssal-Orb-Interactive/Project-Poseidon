@@ -4,27 +4,21 @@ using UnityEngine.Serialization;
 
 namespace Source.Turn_State_Machine
 {
-    /// <summary>
-    /// Turn state machine.
-    /// </summary>
     [RequireComponent(typeof(GameManager))]
     public class TurnMachine : MonoBehaviour
     {
-        /// <summary>
-        /// Current state of Machine.
-        /// </summary>
-        private TurnState _currentState = null;
+        private TurnState _currentState;
 
-        [FormerlySerializedAs("_gameManager")] [SerializeField] private GameManager gameManager = null;
+        [SerializeField] private GameManager _gameManager;
         
         private void OnValidate()
         {
-            gameManager ??= GetComponent<GameManager>();
+            _gameManager ??= GetComponent<GameManager>();
         }
 
         private void Start()
         {
-            gameManager.TurnEnded += ChangeState;
+            _gameManager.TurnEnded += ChangeState;
             InitializeStates();
             _currentState.Enter();
         }

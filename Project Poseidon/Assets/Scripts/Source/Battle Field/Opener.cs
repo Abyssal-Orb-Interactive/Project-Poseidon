@@ -5,7 +5,7 @@ namespace Source.Battle_Field
 {
     public class Opener : IOpener
     {
-        private readonly Vector2Int _coord;
+        private Vector2Int _coord;
 
         public Opener(Vector2Int coord)
         {
@@ -16,5 +16,12 @@ namespace Source.Battle_Field
         {
             return new List<Vector2Int>{_coord};
         }
+
+        public void RemoveCoord(Vector2Int coord)
+        {
+            _coord = Vector2Int.zero;
+        }
+
+        public void Destroy(){}
     }
 }

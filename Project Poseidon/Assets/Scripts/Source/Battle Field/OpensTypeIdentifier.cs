@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,16 +13,21 @@ namespace Source.Battle_Field
             _grid = grid;
         }
 
-        public TypeOfOpens GetType(Vector2Int coord, IOpener opener)
+        public OpenType GetType(Vector2Int coord, IOpener opener)
         {
-            if (opener is ShipExplosion) return TypeOfOpens.ShipExplosion;
+            if (opener is ShipExplosion) return OpenType.ShipExplosion;
 
-            return _grid.HasShip(coord) ? TypeOfOpens.Hit : TypeOfOpens.Miss;
+            return _grid.HasShip(coord) ? OpenType.Hit : OpenType.Miss;
         }
 
-        public IEnumerable<TypeOfOpens> GetTypes(IEnumerable<Vector2Int> coords, IOpener opener)
+        public IEnumerable<OpenType> GetTypes(IEnumerable<Vector2Int> coords, IOpener opener)
         {
-            return coords.Select(coord => GetType(coord, opener)).ToList();
+            return coords.Select(coord => GetType(coord, opener));
+        }
+
+        public void Destroy()
+        {
+            _grid = null;
         }
     }
 }

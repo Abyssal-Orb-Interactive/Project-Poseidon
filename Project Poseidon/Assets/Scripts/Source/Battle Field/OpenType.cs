@@ -1,8 +1,6 @@
-using UnityEngine;
-
 namespace Source.Battle_Field
 {
-    public enum TypeOfOpens
+    public enum OpenType
     {
         Miss,
         Hit,

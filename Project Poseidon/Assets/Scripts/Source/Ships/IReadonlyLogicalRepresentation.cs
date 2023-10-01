@@ -5,11 +5,11 @@ namespace Source.Ships
 {
     public interface IReadonlyLogicalRepresentation
     {
-        public event Explosion OnExplosion;
+        public event ExplosionContext Explosion;
         
         public IEnumerable<Vector2Int> SegmentsCoords { get; }
         public IEnumerable<Vector2Int> RestrictedAreaCoords { get; }
-        public int HP { get; }
+        public int HealthPoints { get; }
         public Vector2Int BowCoord { get; }
 
         public GameObject GetGraphicsRepresentation();

@@ -172,6 +172,7 @@ MonoBehaviour:
   _camera: {fileID: 330585545}
   _markersPack: {fileID: 11400000, guid: 252d9a929d6f576439c5b5b11bb7b50d, type: 2}
   _shipsPack: {fileID: 11400000, guid: 0806dd20fec924e4091f2e57d5b2c3dc, type: 2}
+  _fleet: {fileID: 11400000, guid: a085754bd63a38c488ba489135dfa9c4, type: 2}
 --- !u!4 &92364126
 Transform:
   m_ObjectHideFlags: 0
@@ -243,7 +244,7 @@ GameObject:
   - component: {fileID: 262718842}
   - component: {fileID: 262718841}
   - component: {fileID: 262718840}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +382,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

@@ -4,6 +4,8 @@ namespace Source.Input
 {
     public static class MousePositionCalculator
     {
+        private const float UNIT_VALUE = 10f;
+
         public static Vector2Int CalculateMousePosition(Vector2 screenPosition, Camera camera)
         {
             var mouseWorldPos = ConvertToWorldCoordinates(screenPosition, camera);
@@ -20,7 +22,7 @@ namespace Source.Input
         {
             var mousePosAndDepthOfScreen = new Vector3(screenPosition.x, screenPosition.y, camera.transform.position.y);
             var mouseWorldPosition = camera.ScreenToWorldPoint(mousePosAndDepthOfScreen);
-            var mouseWorldClippedPos = new Vector2(mouseWorldPosition.x / 10f, mouseWorldPosition.z / 10f);
+            var mouseWorldClippedPos = new Vector2(mouseWorldPosition.x / UNIT_VALUE, mouseWorldPosition.z / UNIT_VALUE);
             return mouseWorldClippedPos;
         }
     }

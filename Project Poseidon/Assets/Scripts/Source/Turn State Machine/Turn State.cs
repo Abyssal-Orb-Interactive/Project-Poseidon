@@ -1,8 +1,5 @@
 namespace Source.Turn_State_Machine
 {
-    /// <summary>
-    /// Base turn state class.
-    /// </summary>
     public abstract class TurnState
     {
         public TurnState NextState { get; protected set; }

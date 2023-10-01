@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Source.Ships;
 using UnityEngine;
 
@@ -7,90 +9,170 @@ namespace Source.Battle_Field
 {
     public class Grid
     {
-        private readonly Dictionary<Vector2Int, Cell> _cells;
-        private ShipExplosion _explosion;
-        private bool _isExplosionReady;
+        private IReadOnlyDictionary<Vector2Int, Cell> _cells;
+        private ShipExplosion _currentExplosionZone;
+        private bool _isExplosionReadyToFire;
+
+        public event ExplosionContext ShipExplosion;
 
         public Grid(IDictionary<Vector2Int, Cell> cells)
         {
-            _cells = new Dictionary<Vector2Int, Cell>(cells);
-            _isExplosionReady = false;
+            _cells = new ReadOnlyDictionary<Vector2Int, Cell>(cells);
+            _isExplosionReadyToFire = false;
+
+            if (CellsIsEmpty())
+            {
+                MinCoord = new Vector2Int(0, 0);
+                MaxCoord = new Vector2Int(0, 0);
+            }
+            else
+            {
+                FindMinMaxCoordinates();
+            }
         }
 
-        public event Explosion ShipExplose;
+        private bool CellsIsEmpty()
+        {
+            return _cells.Count == 0;
+        }
+        
+        private void FindMinMaxCoordinates()
+        {
+            var minX = int.MaxValue;
+            var minY = int.MaxValue;
+            var maxX = int.MinValue;
+            var maxY = int.MinValue;
+            
+            foreach (var coord in _cells.Keys)
+            {
+                var x = coord.x;
+                var y = coord.y;
 
+                minX = Math.Min(minX, x);
+                minY = Math.Min(minY, y);
+                maxX = Math.Max(maxX, x);
+                maxY = Math.Max(maxY, y);
+            }
+
+            MinCoord = new Vector2Int(minX, minY);
+            MaxCoord = new Vector2Int(maxX, maxY);
+        }
+        
         public IOpener GetExplosion()
         {
-            if (!_isExplosionReady) throw new InvalidOperationException("Explosion info is not actual.");
+            if (!_isExplosionReadyToFire) throw new InvalidOperationException("Explosion info is not actual.");
 
-            _isExplosionReady = false;
-            return _explosion;
+            _isExplosionReadyToFire = false;
+            return _currentExplosionZone;
         }
         
         public IEnumerable<IReadonlyCell> Cells => _cells.Values;
         public IEnumerable<Vector2Int> Coords => _cells.Keys;
 
+        public Vector2Int MaxCoord { get; private set; }
+
+        public Vector2Int MinCoord { get; private set; }
+
         public bool TryOpenCells(IOpener opener)
         {
-            foreach (var coord in opener.GetOpenInformation())
+            var hasOpened = false;
+            
+            foreach (var coord in opener.GetOpenInformation().ToList())
             {
-
-                if (_cells.ContainsKey(coord) && _cells[coord].TryOpen())
+                if (!_cells.TryGetValue(coord, out var cell) || !cell!.TryOpen())
                 {
-                    if (_cells[coord].GetShipStatus()) _cells[coord].GetShip().TakeHit(opener);
-                    Debug.Log($"Coord {coord.x}-{coord.y}");
+                    opener.RemoveCoord(coord);
                     continue;
                 }
-                
-                foreach (var coord1 in opener.GetOpenInformation())
+
+                if (cell!.HasShip && cell.Ship is ShipLogicalRepresentation ship)
                 {
-                    if (coord == coord1) continue;
-                    
-                    _cells[coord1].TryClose();
+                    ship.TakeHit();
                 }
+                
+                hasOpened = true;
+            }
+
+            return hasOpened;
+        }
+        
+        public bool TryPlaceShip(IEnumerable<Vector2Int> coords, ShipLogicalRepresentation ship)
+        {
+            if (DoesShipHaveSegmentsOutOfGrid(ship))
+            {
                 return false;
             }
 
+            var vector2Ints = coords as Vector2Int[] ?? coords.ToArray();
+            if (!TryPlaceShipSegments(vector2Ints, ship))
+            {
+                ClearCellsAndUnsubscribeFromExplosion(vector2Ints, ship);
+                return false;
+            }
+                
+                
+            SubscribeToExplosion(ship);
             return true;
         }
 
-        public bool TryPlaceShip(IEnumerable<Vector2Int> coords, ShipLogicalRepresentation ship)
+        private bool DoesShipHaveSegmentsOutOfGrid(in IReadonlyLogicalRepresentation ship)
         {
-            var result = true;
+            return ship.SegmentsCoords.Any(segment => !_cells.ContainsKey(segment));
+        }
+        
+        private bool TryPlaceShipSegments(in IEnumerable<Vector2Int> coords, IReadonlyLogicalRepresentation ship)
+        {
+            return coords.All(coord => IsPlacementAllowed(coord, ship));
+        }
+        
+        private bool IsPlacementAllowed(Vector2Int coord, IReadonlyLogicalRepresentation ship)
+        {
+            return _cells[coord].TryPlaceShip(ship);
+        }
+        private void ClearCellsAndUnsubscribeFromExplosion(IEnumerable<Vector2Int> coords, IReadonlyLogicalRepresentation ship)
+        {
+            ClearCells(coords);
+            UnsubscribeToExplosion(ship);
+        }
+        
+        private void ClearCells(IEnumerable<Vector2Int> coords)
+        {
             foreach (var coord in coords)
             {
-                result = _cells[coord].TryPlaceShip(ship);
-                if (result)
-                {
-                    ship.OnExplosion += () => { Explosion(ship); };
-                    continue;
-                }
-                
-                foreach (var coord1 in coords)
-                {
-                    ship.OnExplosion -= () => { Explosion(ship); };
-                    _cells[coord1].Clear();
-                }
-                    
-                break;
+                _cells[coord].Clear();
             }
-
-            
-            
-            return result;
+        }
+        
+        private void SubscribeToExplosion(IReadonlyLogicalRepresentation ship)
+        {
+            ship.Explosion += () => { HandleExplosion(ship); };
         }
 
-        private void Explosion(IReadonlyLogicalRepresentation ship)
+        private void UnsubscribeToExplosion(IReadonlyLogicalRepresentation ship)
         {
-            _explosion = ship.GetExplosionZoneOpener();
-            _isExplosionReady = true;
-            ShipExplose!.Invoke();
+            ship.Explosion -= () => { HandleExplosion(ship); };
+        }
+        
+        private void HandleExplosion(IReadonlyLogicalRepresentation ship)
+        {
+            _currentExplosionZone = ship.GetExplosionZoneOpener();
+            _isExplosionReadyToFire = true;
+            
+            ShipExplosion!.Invoke();
 
         }
         
         public bool HasShip(Vector2Int coord)
         {
-            return _cells.ContainsKey(coord) && _cells[coord].GetShipStatus();
+            return _cells.ContainsKey(coord) && _cells[coord].HasShip;
+        }
+
+        public void Clear()
+        {
+            _currentExplosionZone = null;
+            ShipExplosion = null;
+            _isExplosionReadyToFire = false;
+            _cells = null;
         }
     }
 }

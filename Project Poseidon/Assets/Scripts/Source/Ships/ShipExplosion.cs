@@ -18,5 +18,15 @@ namespace Source
         {
             return _explosionZone;
         }
+
+        public void RemoveCoord(Vector2Int coord)
+        {
+            _explosionZone.Remove(coord);
+        }
+
+        public void Destroy()
+        {
+            _explosionZone = null;
+        }
     }
 }

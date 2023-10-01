@@ -4,7 +4,7 @@ namespace Source.Graphics.Markers
 {
      public abstract class Marker
     {
-        protected readonly GameObject _marker;
+        private GameObject _marker;
 
         protected Marker(GameObject marker)
         {
@@ -14,6 +14,11 @@ namespace Source.Graphics.Markers
         public GameObject GetPlacemenOrigin()
         {
             return _marker;
+        }
+
+        public void Destroy()
+        {
+            _marker = null;
         }
     }
 }

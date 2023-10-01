@@ -1,47 +1,60 @@
 using System;
-using Source.Battle_Field;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.ResourceManagement.Exceptions;
 
 namespace Source.Input
 {
     public class ShootHandler
     {
-        private readonly PlayerActions _actions;
+        private PlayerActions _actions;
         private Vector2Int? _coord;
         private Camera _camera;
         
         public ShootHandler(PlayerActions actions, Camera camera)
         {
-            _actions = actions;
-            _camera = camera;
+            _actions = actions ?? throw new ArgumentNullException(nameof(actions));
+            _camera = camera ? camera : throw new ArgumentNullException(nameof(camera));
+            _coord = null;
             
             Enable();
         }
 
         public Vector2Int GetCoord()
         {
-            if(_coord == null) throw new InvalidOperationException("Player hasn't clicked yet.");
-            
-            var coord = (Vector2Int) _coord;
-            _coord = null;
-            return coord;
+            return (Vector2Int)_coord;
         }
 
         public void Enable()
         {
-            _actions.Base.Shoot.performed += _ => CalculateCoord();
+            SubscribeToShoot();
         }
 
         public void Disable()
         {
-            _actions.Base.Shoot.performed -= _ => CalculateCoord();
+            UnsubscribeToShoot();
         }
-        private void CalculateCoord()
+        private void OnShootPerformed()
         {
             var mouseScreenPos = Mouse.current.position.ReadValue();
             _coord = MousePositionCalculator.CalculateMousePosition(mouseScreenPos, _camera);
+        }
+
+        private void SubscribeToShoot()
+        {
+            _actions.Base.Shoot.performed += _ => OnShootPerformed();
+        }
+
+        private void UnsubscribeToShoot()
+        {
+            _actions.Base.Shoot.performed -= _ => OnShootPerformed();
+        }
+
+        public void Destroy()
+        {
+            Disable();
+            _coord = null;
+            _actions = null;
+            _camera = null;
         }
     }
 }
