@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4232cff2dd7ea488a423bab0c2e1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 92364125}
+  _gameManager: {fileID: 92364125}
 --- !u!114 &92364125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shipHolder: {fileID: 233100835}
+  _fieldOffset: {x: 4.5, y: 4.5}
+  _cellSize: {x: 10, y: 10}
 --- !u!1 &262718838
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +703,7 @@ MonoBehaviour:
   _cellPrefab: {fileID: 1188517683047707801, guid: 4c8df15406c65c947b9659101661779e,
     type: 3}
   _gridContainer: {fileID: 695284445}
-  _fieldOffset: {x: 4.5, y: 0, z: 4.5}
+  _fieldOffset: {x: 4.5, y: 4.5}
 --- !u!1 &723279859
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _markersContainer: {fileID: 723279860}
-  _fieldOffset: {x: 4.5, y: 0, z: 4.5}
+  _fieldOffset: {x: 4.5, y: 4.5}
   _cellOffset: {x: 10, y: 10}
 --- !u!1 &832575517
 GameObject:
