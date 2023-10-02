@@ -6,47 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Battleship.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Battleship.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Cruiser.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Cruiser.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Destroyer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Destroyer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Packs/ShipPack.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Packs/ShipPack.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Torpedo boat.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Ships/Torpedo boat.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Cube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Models/Cube.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GitIntegration/SmartMergeRegistrar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GitIntegration/SmartMergeRegistrar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridFabric.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridGenerator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridFabric.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyCell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/TypeOfOpens.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpenType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/TypeOfOpens.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpenType.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Grid Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Grid Visualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/Marker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/Marker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkerCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkerCreator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Input/MousePositionCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Input/MousePositionCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Input/PlayerActions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Input/PlayerActions.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/ShipExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipExplosion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/ShipExplosion.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipExplosion.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/IReadonlyLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/IReadonlyLogicalRepresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/Orientation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/Orientation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/Ship.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipFabric.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipCreator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipFabric.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipsPack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipsPack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +137,7 @@
       <workItem from="1695883520110" duration="1272000" />
       <workItem from="1695898781257" duration="4763000" />
       <workItem from="1695989933675" duration="31267000" />
-      <workItem from="1696158048144" duration="5033000" />
+      <workItem from="1696158048144" duration="5725000" />
     </task>
     <servers />
   </component>

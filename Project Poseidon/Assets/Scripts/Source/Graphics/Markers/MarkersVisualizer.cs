@@ -46,6 +46,8 @@ namespace Source.Graphics.Markers
 
         public void CleanVisual()
         {
+            if(_markers == null) return;
+            
             foreach (var marker in _markers)
             {
                 marker.SetActive(false);

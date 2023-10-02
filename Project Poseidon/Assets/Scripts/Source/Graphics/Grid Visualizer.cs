@@ -43,6 +43,8 @@ namespace Source.Graphics
 
         public void CleanVisual()
         {
+            if(_cells == null) return;
+            
             foreach (var cell in _cells)
             {
                 cell.SetActive(false);

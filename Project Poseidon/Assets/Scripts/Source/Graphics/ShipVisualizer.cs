@@ -41,6 +41,8 @@ namespace Source.Ships
 
         public void CleanVisual()
         {
+            if(_shipsSegmentsVisuals == null) return;
+            
             foreach (var segment in _shipsSegmentsVisuals.Values)
             {
                 segment.SetActive(false);
