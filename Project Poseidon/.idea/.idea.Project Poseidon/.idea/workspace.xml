@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Grid Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Grid Visualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,11 +21,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/TypeOfOpens.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/HitMarker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/Marker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -34,10 +33,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/ShipExplosionMarker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Input/MousePositionCalculator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Ships/IReadonlyLogicalRepresentation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Ships/NewBehaviourScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipFabric.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/SecondPlayerTurn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Timer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/TimerUniTaskAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
@@ -57,7 +57,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Battle-field-task",
+    "git-widget-placeholder": "Turns-and-Timers",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -137,7 +137,7 @@
       <workItem from="1695883520110" duration="1272000" />
       <workItem from="1695898781257" duration="4763000" />
       <workItem from="1695989933675" duration="31267000" />
-      <workItem from="1696158048144" duration="5725000" />
+      <workItem from="1696158048144" duration="20564000" />
     </task>
     <servers />
   </component>
@@ -165,6 +165,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs</url>
+          <line>43</line>
+          <properties documentPath="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon\Assets\Scripts\Source\Input\ShootHandler.cs" initialLine="43" containingFunctionPresentation="Method 'SubscribeToShoot'">
+            <startOffsets>
+              <option value="1114" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1171" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
