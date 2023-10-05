@@ -1,22 +1,15 @@
-using System;
 using System.Collections.Generic;
+using Source.Ships;
 using UnityEngine;
 
-namespace Source.Ships
+namespace Source.Graphics
 {
-    public class ShipVisualizer : MonoBehaviour
+    public class ShipVisualizer : GameObjectsVisualizer<Dictionary<Vector2Int, GameObject>>
     {
         [SerializeField] private const int DEFEATED_SHIPS_LAYER = 8;
-        [SerializeField] private Transform _shipHolder;
         [SerializeField] private Vector2 _fieldOffset = new(4.5f, 4.5f);
         [SerializeField] private Vector2 _cellSize = new(10f, 10f);
         private Dictionary<Vector2Int, GameObject> _shipsSegmentsVisuals;
-        
-
-        private void OnValidate()
-        {
-            _shipHolder ??= GetComponent<Transform>();
-        }
         
         public void VisualizeShips(IEnumerable<IReadonlyLogicalRepresentation> ships)
         {
@@ -28,7 +21,7 @@ namespace Source.Ships
                 foreach (var coord in ship.SegmentsCoords)
                 {
                     _shipsSegmentsVisuals.Add(coord, Instantiate(prefab, new Vector3(coord.x * _cellSize.x + _fieldOffset.x, 0, coord.y * _cellSize.y + _fieldOffset.y),
-                        Quaternion.identity, _shipHolder));
+                        Quaternion.identity, _container));
                 }
             }
         }
@@ -39,7 +32,7 @@ namespace Source.Ships
             _shipsSegmentsVisuals[coord].layer = DEFEATED_SHIPS_LAYER;
         }
 
-        public void CleanVisual()
+        public override void CleanVisual()
         {
             if(_shipsSegmentsVisuals == null) return;
             
@@ -50,12 +43,6 @@ namespace Source.Ships
             }
 
             _shipsSegmentsVisuals = null;
-        }
-
-        private void OnDestroy()
-        {
-            CleanVisual();
-            _shipHolder = null;
         }
     }
 }
