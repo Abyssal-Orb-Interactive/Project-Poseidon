@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Source.Ships
 {
-    public interface IReadonlyLogicalRepresentation
+    public interface IReadonlyLogicalRepresentation : IDisposable
     {
         public event ExplosionContext Explosion;
         

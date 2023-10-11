@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Source.Battle_Field;
 using UnityEngine;
 
-namespace Source
+namespace Source.Ships
 {
     public class ShipExplosion : IOpener
     {
@@ -24,7 +24,7 @@ namespace Source
             _explosionZone.Remove(coord);
         }
 
-        public void Destroy()
+        public void Dispose()
         {
             _explosionZone = null;
         }

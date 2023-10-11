@@ -17,5 +17,11 @@ namespace Source.Turn_State_Machine
         {
             Debug.Log("SecondPlayerTurn Ends");
         }
+        
+        public override void Dispose()
+        {
+            NextState?.Dispose();
+            base.Dispose();
+        }
     }
 }

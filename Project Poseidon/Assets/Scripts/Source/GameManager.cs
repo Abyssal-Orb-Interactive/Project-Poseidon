@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Base.Timers;
 using Source.Battle_Field;
 using Source.Graphics;
 using Source.Graphics.Markers;
@@ -25,27 +26,46 @@ namespace Source
         [SerializeField] private MarkersPack _markersPack;
         [SerializeField] private ShipsPack _shipsPack;
         [SerializeField] private Fleet _fleet;
+        
+        private AmmoController _ammoController;
+        private FrameTimer _timer;
+        private TimeInvoker _timeInvoker;
 
         private void Start()
         {
+            _timeInvoker = TimeInvoker.Instance;
             _grid = new Grid(GridFabric.CreateGrid());
             _grid.ShipExplosion += VisualizeExplosionMarkers;
             _gridVisualizer.Initialize(_grid);
+            _gridVisualizer.Visualize();
             _opensTypeIdentifier = new OpensTypeIdentifier(_grid);
             ShipFabric.Initialize(_shipsPack);
             var shipPlacer = new ShipPlacer(_grid, _fleet);
 
             shipPlacer.TryPlaceShips();
-            MarkerCreator.Initialize(_markersPack);
+            MarkerFabric.Initialize(_markersPack);
             
-            _shipVisualizer.VisualizeShips(shipPlacer.GetAllShips());
+            _shipVisualizer.AddShips(shipPlacer.GetAllShips());
+            _shipVisualizer.Visualize();
 
             _actions = new PlayerActions();
             _actions.Enable();
             _shootHandler = new ShootHandler(_actions, _camera);
 
             _actions.Base.Shoot.performed += _ => Shoot();
+
+            _ammoController = new AmmoController();
             
+            _ammoController.AmmunitionIsEmpty += OnEndTurn;
+
+            _timer = new FrameTimer(5);
+            _timer.TimerFinished += OnEndTurn;
+            _timer.Start();
+        }
+
+        private void Update()
+        {
+            _timeInvoker.UpdateTimer();
         }
 
         private void Shoot()
@@ -54,28 +74,40 @@ namespace Source
             var opener = new Opener(shootCoord);
             
             if (!_grid.TryOpenCells(opener)) return;
+
+            var type = _opensTypeIdentifier.GetType(shootCoord, opener);
+
+            if (type != OpenType.Hit)
+            {
+                _ammoController.TakeAmmo();
+            }
             
             _shipVisualizer.VisualizeHit(shootCoord);
-            _markersVisualizer.PlaceMarker(shootCoord, _opensTypeIdentifier.GetType(shootCoord, opener));
+            _markersVisualizer.AddMarker(shootCoord, type);
+            _markersVisualizer.Visualize();
         }
 
         private void VisualizeExplosionMarkers()
         {
             var opener = _grid.GetExplosion();
             var coords = (IReadOnlyList<Vector2Int>)opener.GetOpenInformation();
-            if(_grid.TryOpenCells(opener)) _markersVisualizer.PlaceMarkers(coords, new List<OpenType>(_opensTypeIdentifier.GetTypes(coords, opener)));
+            if(_grid.TryOpenCells(opener)) _markersVisualizer.AddMarkers(coords, new List<OpenType>(_opensTypeIdentifier.GetTypes(coords, opener)));
+            _markersVisualizer.Visualize();
         }
         
         private void OnDisable()
         {
             _shootHandler.Disable();
             _actions.Base.Shoot.performed -= _ => Shoot();
-            
+            _ammoController.Dispose();
+            //_counter.Dispose();
         }
 
-        private void EndTurn()
+        private void OnEndTurn()
         {
             TurnEnded?.Invoke();
+            _timer.Stop();
+            _timer.Start();
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Source.Battle_Field
 {
-    public class Grid
+    public class Grid : IDisposable
     {
         private IReadOnlyDictionary<Vector2Int, Cell> _cells;
         private ShipExplosion _currentExplosionZone;
@@ -173,6 +173,11 @@ namespace Source.Battle_Field
             ShipExplosion = null;
             _isExplosionReadyToFire = false;
             _cells = null;
+        }
+
+        public void Dispose()
+        {
+            Clear();
         }
     }
 }

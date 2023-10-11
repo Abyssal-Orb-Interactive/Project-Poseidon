@@ -7,5 +7,9 @@ namespace Source.Graphics.Markers
         public MissMarker(GameObject marker) : base(marker)
         {
         }
+
+        public override void Dispose()
+        {
+        }
     }
 }

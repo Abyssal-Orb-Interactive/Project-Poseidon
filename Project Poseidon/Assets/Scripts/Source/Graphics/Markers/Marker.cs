@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Source.Graphics.Markers
 {
-     public abstract class Marker
+     public abstract class Marker : IDisposable
     {
         private GameObject _marker;
 
@@ -20,5 +21,7 @@ namespace Source.Graphics.Markers
         {
             _marker = null;
         }
+
+        public abstract void Dispose();
     }
 }

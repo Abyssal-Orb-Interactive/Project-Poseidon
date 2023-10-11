@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Base;
 using UnityEngine;
 
 namespace Source.Ships
@@ -17,13 +18,15 @@ namespace Source.Ships
         private Ship _ship;
         private HashSet<Vector2Int> _segmentsCoords;
         private HashSet<Vector2Int> _restrictedAreaCoords;
+        private readonly CounterInt _healthPointsCounter;
 
         public event ExplosionContext Explosion;
         
         public ShipLogicalRepresentation(Ship ship)
         {
             _ship = ship ? ship : throw new ArgumentNullException(nameof(ship));
-            HealthPoints = _ship.Size;
+            _healthPointsCounter = new CounterInt(_ship.Size, 0, () => -1);
+            _healthPointsCounter.TargetReached += OnExplosion;
             _segmentsCoords = new HashSet<Vector2Int>();
             _restrictedAreaCoords = new HashSet<Vector2Int>();
             BowCoord = Vector2Int.zero;
@@ -31,7 +34,7 @@ namespace Source.Ships
         
         public IEnumerable<Vector2Int> SegmentsCoords => _segmentsCoords;
         public IEnumerable<Vector2Int> RestrictedAreaCoords => _restrictedAreaCoords;
-        public int HealthPoints { get; private set; }
+        public int HealthPoints => _healthPointsCounter.CurrentValue;
         public Vector2Int BowCoord { get; private set; }
         public Orientation Orientation { get; set; } = Orientation.Vertical;
         
@@ -54,12 +57,7 @@ namespace Source.Ships
         
         public void TakeHit()
         {
-            HealthPoints--;
-            
-            if (HealthPoints > 0) return;
-            
-            Explosion!.Invoke();
-            Destroy();
+            _healthPointsCounter.CalculateNextValue();
         }
         
         public ShipExplosion GetExplosionZoneOpener()
@@ -67,11 +65,12 @@ namespace Source.Ships
             return new ShipExplosion(_restrictedAreaCoords);
         }
         
-        public void Destroy()
+        public void Dispose()
         {
             _segmentsCoords = null;
             _restrictedAreaCoords = null;
             _ship = null;
+            _healthPointsCounter.Dispose();
             Explosion = null;
         }
         
@@ -113,6 +112,12 @@ namespace Source.Ships
                 var coord = new Vector2Int(segment.x + dx, segment.y + dy);
                 _restrictedAreaCoords.Add(coord);
             }
+        }
+
+        private void OnExplosion()
+        {
+            Explosion?.Invoke();
+            Dispose();
         }
         
         private (int, int) GetRelativePosition(int index)

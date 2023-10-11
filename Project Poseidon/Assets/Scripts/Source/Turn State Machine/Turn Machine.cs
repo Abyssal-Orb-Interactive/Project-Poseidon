@@ -1,4 +1,4 @@
-using System;
+using Base;
 using UnityEngine;
 
 namespace Source.Turn_State_Machine
@@ -7,7 +7,6 @@ namespace Source.Turn_State_Machine
     public class TurnMachine : MonoBehaviour
     {
         private TurnState _currentState;
-        private TimerUniTaskAdapter _timer;
         [SerializeField] private GameManager _gameManager;
         
         private void OnValidate()
@@ -17,14 +16,10 @@ namespace Source.Turn_State_Machine
 
         private void Start()
         {
-            _timer = new TimerUniTaskAdapter(5f);
-            _gameManager.TurnEnded += ChangeState;
-            _timer.TimeEnded += ChangeState;
-            
+            _gameManager.TurnEnded += ChangeState; 
             InitializeStates();
             
             _currentState.Enter();
-            _timer.StartTimerAsync();
         }
 
         private void InitializeStates()
@@ -50,13 +45,10 @@ namespace Source.Turn_State_Machine
             _currentState.Exit();
             _currentState = _currentState.NextState;
             _currentState.Enter();
-            _timer.StartTimerAsync();
         }
 
         private void OnDisable()
         {
-            _timer.StopTimer();
-            _timer.Destroy();
         }
     } 
 }

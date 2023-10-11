@@ -5,12 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/GameObjectsVisualizer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/GameObjectsVisualizer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/CounterBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/CounterBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/CounterFloat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/CounterFloat.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/CounterInt.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/CounterInt.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/FunctionNatureDeterment.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/FunctionNatureDeterment.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/CollectionGameObjectsVisualizer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/DictionaryGameObjectsVisualizer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/DictionaryGameObjectsVisualizer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/GameObjectVisualizer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/GameObjectVisualizer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/UnityEntityVisualizer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/UnityEntityVisualizer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/NatureOfFunction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/NatureOfFunction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/FrameTimer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/FrameTimer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/SecondTimer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/SecondTimer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimeInvoker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimeInvoker.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/Timer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimerType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimerType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledFrameTimer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledFrameTimer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledSecondTimer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledSecondTimer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/AmmoController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/AmmoController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GitIntegration.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/GitIntegration.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GitIntegration/SmartMergeRegistrar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/GitIntegration/SmartMergeRegistrar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GitIntegration/SmartMergeRegistrar.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/GitIntegration/SmartMergeRegistrar.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyCell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/GameObjectsVisualizer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/GameObjectsVisualizer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/CollectionGameObjectsVisualizer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Grid Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Grid Visualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/HitMarker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/HitMarker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/Marker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/Marker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkerCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkerFabric.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkerCreator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkerFabric.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MarkersVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MissMarker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/MissMarker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/ShipExplosionMarker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/Markers/ShipExplosionMarker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/IReadonlyLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/IReadonlyLogicalRepresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipExplosion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/FirstPlayerTurn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/FirstPlayerTurn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/SecondPlayerTurn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/SecondPlayerTurn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Timer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Timer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/Timer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/TimerUniTaskAdapter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/TimerUniTaskAdapter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +85,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10871f9e312b442cb78b9b97db88fdcb172a00/74/2d11c289/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Timer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/TimerUniTaskAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyCell.cs" root0="FORCE_HIGHLIGHTING" />
@@ -37,10 +104,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipFabric.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/SecondPlayerTurn.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Timer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/TimerUniTaskAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@cfe509a556/Runtime/UniTaskCompletionSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@cfe509a556/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -76,7 +143,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Apps\Unity3D\2022.3.8f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -84,7 +151,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Apps\Unity3D\2022.3.8f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -139,6 +206,10 @@
       <workItem from="1695898781257" duration="4763000" />
       <workItem from="1695989933675" duration="31267000" />
       <workItem from="1696158048144" duration="20564000" />
+      <workItem from="1696511063004" duration="2372000" />
+      <workItem from="1696596558232" duration="34650000" />
+      <workItem from="1696770847407" duration="1767000" />
+      <workItem from="1696840391484" duration="32490000" />
     </task>
     <servers />
   </component>
@@ -159,12 +230,6 @@
           <line>58</line>
           <properties documentPath="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon\Library\PackageCache\com.unity.inputsystem@1.6.3\InputSystem\Utilities\DelegateHelpers.cs" initialLine="58" containingFunctionPresentation="Method 'InvokeCallbacksSafe'" />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs</url>
-          <line>43</line>
-          <properties documentPath="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon\Assets\Scripts\Source\Input\ShootHandler.cs" initialLine="43" containingFunctionPresentation="Method 'SubscribeToShoot'" />
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

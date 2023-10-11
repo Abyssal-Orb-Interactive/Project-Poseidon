@@ -22,6 +22,9 @@ namespace Source.Battle_Field
             _coord = Vector2Int.zero;
         }
 
-        public void Destroy(){}
+        public void Dispose()
+        {
+            _coord = Vector2Int.zero;
+        }
     }
 }

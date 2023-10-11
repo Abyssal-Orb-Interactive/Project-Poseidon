@@ -3,7 +3,7 @@ using Source.Battle_Field;
 
 namespace Source.Graphics.Markers
 {
-    public static class MarkerCreator
+    public static class MarkerFabric
     {
         private static MarkersPack _pack;
 

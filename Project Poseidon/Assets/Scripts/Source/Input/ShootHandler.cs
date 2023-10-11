@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Source.Input
 {
-    public class ShootHandler
+    public class ShootHandler : IDisposable
     {
         private PlayerActions _actions;
         private Vector2Int? _coord;
@@ -49,7 +49,7 @@ namespace Source.Input
             _actions.Base.Shoot.performed -= _ => OnShootPerformed();
         }
 
-        public void Destroy()
+        public void Dispose()
         {
             Disable();
             _coord = null;

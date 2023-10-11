@@ -1,6 +1,8 @@
+using System;
+
 namespace Source.Turn_State_Machine
 {
-    public abstract class TurnState
+    public abstract class TurnState : IDisposable
     {
         public TurnState NextState { get; protected set; }
 
@@ -14,5 +16,10 @@ namespace Source.Turn_State_Machine
         public virtual void Exit(){}
         public virtual void LogicUpdate(){}
         public virtual void PhysicsUpdate(){}
+
+        public virtual void Dispose()
+        {
+            NextState?.Dispose();
+        }
     }
 }

@@ -23,5 +23,11 @@ namespace Source.Turn_State_Machine
         {
             NextState = state;
         }
+
+        public override void Dispose()
+        {
+            NextState?.Dispose();
+            base.Dispose();
+        }
     }
 }

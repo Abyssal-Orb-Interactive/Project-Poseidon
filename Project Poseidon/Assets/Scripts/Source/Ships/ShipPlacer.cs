@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace Source.Ships
 {
-    public class ShipPlacer
+    public class ShipPlacer : IDisposable
     {
         private List<ShipLogicalRepresentation> _ships;
         private Grid _grid;
@@ -92,7 +92,7 @@ namespace Source.Ships
             return _ships;
         }
 
-        public void Destroy()
+        public void Dispose()
         {
             _ships = null;
             _grid = null;

@@ -1,8 +1,9 @@
+using System;
 using Source.Ships;
 
 namespace Source.Battle_Field
 {
-    public class Cell : IReadonlyCell
+    public class Cell : IReadonlyCell, IDisposable
     {
         public bool IsOpened { get; private set; }
         public IReadonlyLogicalRepresentation Ship { get; private set; }
@@ -37,6 +38,11 @@ namespace Source.Battle_Field
         {
             Ship = null;
             IsOpened = false;
+        }
+
+        public void Dispose()
+        {
+            Clear();
         }
     }
 }

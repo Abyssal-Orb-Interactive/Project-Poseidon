@@ -7,5 +7,9 @@ namespace Source.Graphics.Markers
         public HitMarker(GameObject marker) : base(marker)
         {
         }
+
+        public override void Dispose()
+        {
+        }
     }
 }

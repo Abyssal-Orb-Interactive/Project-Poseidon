@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Source.Ships;
 using UnityEngine;
 
 namespace Source.Battle_Field
 {
-    public class OpensTypeIdentifier
+    public class OpensTypeIdentifier : IDisposable
     {
         private Grid _grid;
 
@@ -25,7 +27,7 @@ namespace Source.Battle_Field
             return coords.Select(coord => GetType(coord, opener));
         }
 
-        public void Destroy()
+        public void Dispose()
         {
             _grid = null;
         }
