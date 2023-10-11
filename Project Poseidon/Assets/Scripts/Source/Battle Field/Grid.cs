@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Source.Battle_Field
 {
-    public class Grid : IDisposable
+    public class Grid : ReadonlyGrid
     {
         private IReadOnlyDictionary<Vector2Int, Cell> _cells;
         private ShipExplosion _currentExplosionZone;
@@ -58,7 +58,7 @@ namespace Source.Battle_Field
             MaxCoord = new Vector2Int(maxX, maxY);
         }
         
-        public IOpener GetExplosion()
+        public override IReadonlyOpener GetExplosion()
         {
             if (!_isExplosionReadyToFire) throw new InvalidOperationException("Explosion info is not actual.");
 
@@ -69,9 +69,14 @@ namespace Source.Battle_Field
         public IEnumerable<IReadonlyCell> Cells => _cells.Values;
         public IEnumerable<Vector2Int> Coords => _cells.Keys;
 
-        public Vector2Int MaxCoord { get; private set; }
+        public override IEnumerable<Vector2Int> GetCoords()
+        {
+            return Coords;
+        }
 
-        public Vector2Int MinCoord { get; private set; }
+        public override Vector2Int MaxCoord { get; protected set; }
+
+        public override Vector2Int MinCoord { get; protected set; }
 
         public bool TryOpenCells(IOpener opener)
         {
@@ -162,9 +167,14 @@ namespace Source.Battle_Field
 
         }
         
-        public bool HasShip(Vector2Int coord)
+        public override bool HasShip(Vector2Int coord)
         {
             return _cells.ContainsKey(coord) && _cells[coord].HasShip;
+        }
+
+        public override IEnumerable<IReadonlyCell> GetCells()
+        {
+            return Cells;
         }
 
         public void Clear()
@@ -175,9 +185,10 @@ namespace Source.Battle_Field
             _cells = null;
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             Clear();
+            GC.SuppressFinalize(this);
         }
     }
 }

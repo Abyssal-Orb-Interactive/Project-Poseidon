@@ -81,12 +81,16 @@ namespace Source
 
             var type = _opensTypeIdentifier.GetType(shootCoord, opener);
 
-            if (type != OpenType.Hit)
+            if (type == OpenType.Hit)
+            {
+                _timer.Restart();
+                _shipVisualizer.VisualizeHit(shootCoord);
+            }
+            else
             {
                 _ammoController.TakeAmmo();
             }
             
-            _shipVisualizer.VisualizeHit(shootCoord);
             _markersVisualizer.AddMarker(shootCoord, type);
             _markersVisualizer.Visualize();
         }
@@ -95,7 +99,7 @@ namespace Source
         {
             var opener = _grid.GetExplosion();
             var coords = (IReadOnlyList<Vector2Int>)opener.GetOpenInformation();
-            if(_grid.TryOpenCells(opener)) _markersVisualizer.AddMarkers(coords, new List<OpenType>(_opensTypeIdentifier.GetTypes(coords, opener)));
+            if(_grid.TryOpenCells((IOpener)opener)) _markersVisualizer.AddMarkers(coords, new List<OpenType>(_opensTypeIdentifier.GetTypes(coords, (IOpener)opener)));
             _markersVisualizer.Visualize();
         }
         
@@ -103,8 +107,6 @@ namespace Source
         {
             _shootHandler.Disable();
             _actions.Base.Shoot.performed -= _ => Shoot();
-            _ammoController.Dispose();
-            _timer.Dispose();
         }
 
         private void OnEndTurn()

@@ -11,8 +11,8 @@ namespace Base
         
         protected Func<T> _function;
         
-        public Action TargetReached;
-        public Action ValueChanged;
+        public event Action TargetReached;
+        public event Action ValueChanged;
 
         protected CounterBase(T initialValue, T targetValue, Func<T> function)
         {
@@ -47,11 +47,14 @@ namespace Base
         
         public void Dispose()
         {
+            ValueChanged = null;
+            TargetReached = null;
             StartValue = default;
             TargetValue = default;
             Reset();
             _function = null;
             NatureOfCounting = NatureOfFunction.Constant;
+            GC.SuppressFinalize(this);
         }
         
     }

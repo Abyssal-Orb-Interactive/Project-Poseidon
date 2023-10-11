@@ -1,5 +1,4 @@
 using System;
-using UnityEditorInternal;
 
 namespace Base.Timers
 {
@@ -12,12 +11,12 @@ namespace Base.Timers
             _invoker = invoker;
         }
 
-        public override void Subscribe()
+        protected override void Subscribe()
         {
             _invoker.FrameUpdated += OnTimerTick;
         }
 
-        public override void Unsubscribe()
+        protected override void Unsubscribe()
         {
             _invoker.FrameUpdated -= OnTimerTick;
         }

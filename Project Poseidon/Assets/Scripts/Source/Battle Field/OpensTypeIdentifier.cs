@@ -8,9 +8,9 @@ namespace Source.Battle_Field
 {
     public class OpensTypeIdentifier : IDisposable
     {
-        private Grid _grid;
+        private ReadonlyGrid _grid;
 
-        public OpensTypeIdentifier(Grid grid)
+        public OpensTypeIdentifier(ReadonlyGrid grid)
         {
             _grid = grid;
         }

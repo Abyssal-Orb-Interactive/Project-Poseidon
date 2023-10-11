@@ -11,12 +11,12 @@ namespace Base.Timers
             _invoker = invoker;
         }
 
-        public override void Subscribe()
+        protected override void Subscribe()
         {
             _invoker.UnscaledFrameUpdated += OnTimerTick;
         }
 
-        public override void Unsubscribe()
+        protected override void Unsubscribe()
         {
             _invoker.UnscaledFrameUpdated -= OnTimerTick;
         }

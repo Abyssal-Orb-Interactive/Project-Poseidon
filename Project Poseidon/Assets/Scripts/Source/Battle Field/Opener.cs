@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ namespace Source.Battle_Field
         public void Dispose()
         {
             _coord = Vector2Int.zero;
+            GC.SuppressFinalize(this);
         }
     }
 }

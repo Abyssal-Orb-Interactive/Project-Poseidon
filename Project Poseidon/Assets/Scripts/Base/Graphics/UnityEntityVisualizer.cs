@@ -21,7 +21,7 @@ namespace Base.Graphics
 
         public abstract void CleanVisual();
 
-        protected virtual void Destruct()
+        protected virtual void Dispose()
         {
             _container = null;
         }
@@ -29,7 +29,7 @@ namespace Base.Graphics
         protected virtual void OnDestroy()
         {
             CleanVisual();
-            Destruct();
+            Dispose();
         }
     }
 }

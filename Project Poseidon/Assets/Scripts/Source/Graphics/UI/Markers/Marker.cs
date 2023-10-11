@@ -5,7 +5,7 @@ namespace Source.Graphics.Markers
 {
      public abstract class Marker : IDisposable
     {
-        private GameObject _marker;
+        protected GameObject _marker;
 
         protected Marker(GameObject marker)
         {
@@ -17,11 +17,11 @@ namespace Source.Graphics.Markers
             return _marker;
         }
 
-        public void Destroy()
+        public virtual void Dispose()
         {
+            _marker.SetActive(false);
             _marker = null;
+            GC.SuppressFinalize(this);
         }
-
-        public abstract void Dispose();
     }
 }

@@ -26,6 +26,7 @@ namespace Source
         public void Dispose()
         {
             _counter.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         private void OnAmmunitionEmpty()

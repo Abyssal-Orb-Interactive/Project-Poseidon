@@ -94,9 +94,11 @@ namespace Source.Ships
 
         public void Dispose()
         {
+            _grid.Dispose();
             _ships = null;
             _grid = null;
             _fleet = null;
+            GC.SuppressFinalize(this);
         }
     }
 }

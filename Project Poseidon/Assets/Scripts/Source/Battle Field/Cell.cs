@@ -3,7 +3,7 @@ using Source.Ships;
 
 namespace Source.Battle_Field
 {
-    public class Cell : IReadonlyCell, IDisposable
+    public class Cell : IReadonlyCell
     {
         public bool IsOpened { get; private set; }
         public IReadonlyLogicalRepresentation Ship { get; private set; }
@@ -43,6 +43,7 @@ namespace Source.Battle_Field
         public void Dispose()
         {
             Clear();
+            GC.SuppressFinalize(this);
         }
     }
 }

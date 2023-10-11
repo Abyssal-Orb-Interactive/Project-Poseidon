@@ -51,12 +51,12 @@ namespace Source.Graphics.Markers
             Visual.Add(marker);
         }
 
-        protected override void Destruct()
+        protected override void Dispose()
         {
             _cellOffset = Vector2.zero;
             _fieldOffset = Vector2.zero;
             _markersData = null;
-            base.Destruct();
+            base.Dispose();
         }
         
         private struct MarkerData

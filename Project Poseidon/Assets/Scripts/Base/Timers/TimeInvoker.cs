@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Base.Timers
@@ -72,6 +73,15 @@ namespace Base.Timers
         public float GetTimeScale()
         {
             return Time.timeScale;
+        }
+
+        private void OnDestroy()
+        {
+            FrameUpdated = null;
+            SecondUpdated = null;
+            UnscaledFrameUpdated = null;
+            UnscaledSecondUpdated = null;
+            _instance = null;
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Source.Battle_Field;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace Source.Ships
         public void Dispose()
         {
             _explosionZone = null;
+            GC.SuppressFinalize(this);
         }
     }
 }

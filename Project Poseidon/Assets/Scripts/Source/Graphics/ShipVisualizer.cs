@@ -56,12 +56,12 @@ namespace Source.Graphics
             _shipsData.Clear();
         }
 
-        protected override void Destruct()
+        protected override void Dispose()
         {
            _fieldOffset = Vector2.zero;
            _cellSize = Vector2.zero;
            _shipsData = null;
-           base.Destruct();
+           base.Dispose();
         }
         
         private struct ShipData

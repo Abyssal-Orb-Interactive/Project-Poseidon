@@ -55,6 +55,7 @@ namespace Source.Input
             _coord = null;
             _actions = null;
             _camera = null;
+            GC.SuppressFinalize(this);
         }
     }
 }

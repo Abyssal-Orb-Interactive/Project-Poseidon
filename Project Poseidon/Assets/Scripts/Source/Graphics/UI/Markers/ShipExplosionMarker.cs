@@ -7,9 +7,5 @@ namespace Source.Graphics.Markers
         public ShipExplosionMarker(GameObject marker) : base(marker)
         {
         }
-
-        public override void Dispose()
-        {
-        }
     }
 }

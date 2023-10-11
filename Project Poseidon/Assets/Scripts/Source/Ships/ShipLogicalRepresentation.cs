@@ -72,6 +72,7 @@ namespace Source.Ships
             _ship = null;
             _healthPointsCounter.Dispose();
             Explosion = null;
+            GC.SuppressFinalize(this);
         }
         
         private void RecalculateAllCoords()

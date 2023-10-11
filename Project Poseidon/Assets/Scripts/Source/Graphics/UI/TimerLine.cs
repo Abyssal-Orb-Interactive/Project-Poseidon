@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace Source.Graphics.UI
         [SerializeField] private Image _timeBar;
         [SerializeField] private TextMeshProUGUI _timerText;
         private Timer _timer;
-        private float _remainingTimeInPrecents;
+        private float _remainingTimeInPercentage;
 
         private void OnValidate()
         {
@@ -31,8 +32,8 @@ namespace Source.Graphics.UI
 
         public void UpdateTimeBar()
         {
-            _remainingTimeInPrecents = _timer.RemainingTime / _timer.DelayTimeInSeconds;
-            _timeBar.fillAmount = _remainingTimeInPrecents;
+            _remainingTimeInPercentage = _timer.RemainingTime / _timer.DelayTimeInSeconds;
+            _timeBar.fillAmount = _remainingTimeInPercentage;
             _timerText.text = _timer.RemainingTime.ToString("F2", CultureInfo.InvariantCulture);
         }
 
@@ -44,6 +45,14 @@ namespace Source.Graphics.UI
         private void Unsubscribe()
         {
             _timer.TimerTick -= UpdateTimeBar;
+        }
+
+        private void OnDestroy()
+        {
+            Unsubscribe();
+            _timer.Dispose();
+            _timerText = null;
+            _timeBar = null;
         }
     }
 }

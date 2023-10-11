@@ -1,9 +1,9 @@
 #if UNITY_EDITOR
-using UnityEngine;
-using UnityEditor;
 using System;
+using UnityEditor;
+using UnityEngine;
 
-namespace GitIntegration
+namespace Base.GitIntegration
 {
     [InitializeOnLoad]
     public class SmartMergeRegistrar

@@ -36,8 +36,6 @@ namespace Base.Timers
             {
                 Counter.IncreaseTargetValue(reducingDelta);
             }
-            
-            Counter.ValueChanged.Invoke();
         }
 
         public void IncreaseDelayTime(float increasingDelta)
@@ -52,8 +50,6 @@ namespace Base.Timers
             {
                 Counter.DecreaseTargetValue(-increasingDelta);
             }
-            
-            Counter.ValueChanged.Invoke();
         }
 
         public void Start()
@@ -121,8 +117,8 @@ namespace Base.Timers
             TimerTick?.Invoke();
         }
 
-        public abstract void Subscribe();
-        public abstract void Unsubscribe();
+        protected abstract void Subscribe();
+        protected abstract void Unsubscribe();
     }
 }
 

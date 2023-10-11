@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Base.Graphics;
+using Source.Battle_Field;
 using UnityEngine;
 using Grid = Source.Battle_Field.Grid;
 
@@ -9,9 +10,9 @@ namespace Source.Graphics.UI
     {
         [SerializeField] private GameObject _cellPrefab;
         [SerializeField] private Vector2 _fieldOffset = new(4.5f, 4.5f);
-        private Grid _grid;
+        private ReadonlyGrid _grid;
 
-        public void Initialize(Grid grid)
+        public void Initialize(ReadonlyGrid grid)
         {
            _grid = grid;
         }
@@ -28,7 +29,7 @@ namespace Source.Graphics.UI
             var cellRect = _cellPrefab.GetComponent<RectTransform>().rect;
             var cellSize = new Vector2(cellRect.width, cellRect.height);
             
-            foreach (var coord in _grid.Coords)
+            foreach (var coord in _grid.GetCoords())
             {
                 var cell = Instantiate(_cellPrefab,_container);
                 
@@ -40,12 +41,12 @@ namespace Source.Graphics.UI
             }
         }
 
-        protected override void Destruct()
+        protected override void Dispose()
         {
             _grid = null;
             _cellPrefab = null;
             _fieldOffset = Vector2.zero;
-            base.Destruct();
+            base.Dispose();
         }
     }
 }
