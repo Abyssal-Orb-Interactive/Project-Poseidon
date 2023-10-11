@@ -1,6 +1,7 @@
+using Source.Graphics.Markers;
 using UnityEngine;
 
-namespace Source.Graphics.Markers
+namespace Source.Graphics.UI.Markers
 {
     public class HitMarker : Marker
     {

@@ -1,19 +1,31 @@
+using System;
+using UnityEditorInternal;
+
 namespace Base.Timers
 {
     public class FrameTimer : Timer
     {
-        public FrameTimer(float delayTimeInSeconds) : base(delayTimeInSeconds, TimeInvoker.Instance.GetDeltaTime)
+        private TimeInvoker _invoker;
+        
+        public FrameTimer(float delayTimeInSeconds, Func<float> timeSource, TimeInvoker invoker) : base(delayTimeInSeconds, timeSource)
         {
+            _invoker = invoker;
         }
 
         public override void Subscribe()
         {
-            TimeInvoker.Instance.FrameUpdated += OnTimerTick;
+            _invoker.FrameUpdated += OnTimerTick;
         }
 
         public override void Unsubscribe()
         {
-            TimeInvoker.Instance.FrameUpdated -= OnTimerTick;
+            _invoker.FrameUpdated -= OnTimerTick;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            _invoker = null;
         }
     }
 }

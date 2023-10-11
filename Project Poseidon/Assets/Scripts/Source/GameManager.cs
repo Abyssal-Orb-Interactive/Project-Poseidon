@@ -4,6 +4,7 @@ using Base.Timers;
 using Source.Battle_Field;
 using Source.Graphics;
 using Source.Graphics.Markers;
+using Source.Graphics.UI;
 using Source.Input;
 using Source.Ships;
 using UnityEngine;
@@ -26,9 +27,10 @@ namespace Source
         [SerializeField] private MarkersPack _markersPack;
         [SerializeField] private ShipsPack _shipsPack;
         [SerializeField] private Fleet _fleet;
+        [SerializeField] private TimerLine _timerLine;
         
         private AmmoController _ammoController;
-        private FrameTimer _timer;
+        private Timer _timer;
         private TimeInvoker _timeInvoker;
 
         private void Start()
@@ -58,14 +60,16 @@ namespace Source
             
             _ammoController.AmmunitionIsEmpty += OnEndTurn;
 
-            _timer = new FrameTimer(5);
+            _timer = TimerFabric.Create(TimerType.UnscaledFrameTimer, 5f);
             _timer.TimerFinished += OnEndTurn;
+            _timerLine.Initialize(_timer);
             _timer.Start();
         }
 
         private void Update()
         {
             _timeInvoker.UpdateTimer();
+            _timerLine.UpdateTimeBar();
         }
 
         private void Shoot()
@@ -100,14 +104,13 @@ namespace Source
             _shootHandler.Disable();
             _actions.Base.Shoot.performed -= _ => Shoot();
             _ammoController.Dispose();
-            //_counter.Dispose();
+            _timer.Dispose();
         }
 
         private void OnEndTurn()
         {
             TurnEnded?.Invoke();
-            _timer.Stop();
-            _timer.Start();
+           _timer.Restart();
         }
     }
 }

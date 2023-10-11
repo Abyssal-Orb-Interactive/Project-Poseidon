@@ -1,19 +1,29 @@
+using System;
+
 namespace Base.Timers
 {
     public class SecondTimer : Timer
     {
-        public SecondTimer(float delayTimeInSeconds) : base(delayTimeInSeconds, TimeInvoker.Instance.GetTimeScale)
+        private TimeInvoker _invoker;
+        public SecondTimer(float delayTimeInSeconds, Func<float> timeSource, TimeInvoker invoker) : base(delayTimeInSeconds, timeSource)
         {
+            _invoker = invoker;
         }
 
         public override void Subscribe()
         {
-            TimeInvoker.Instance.SecondUpdated += OnTimerTick;
+            _invoker.SecondUpdated += OnTimerTick;
         }
 
         public override void Unsubscribe()
         {
-            TimeInvoker.Instance.SecondUpdated -= OnTimerTick;
+            _invoker.SecondUpdated -= OnTimerTick;
+        }
+        
+        public override void Dispose()
+        {
+            base.Dispose();
+            _invoker = null;
         }
     }
 }

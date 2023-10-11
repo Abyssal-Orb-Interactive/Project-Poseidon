@@ -68,6 +68,12 @@ namespace Base.Timers
             Counter.Reset();
         }
 
+        public void Restart()
+        {
+            Stop();
+            Start();
+        }
+
         public void Pause()
         {
             IsPaused = true;
@@ -83,6 +89,7 @@ namespace Base.Timers
         public virtual void Dispose()
         {
             Counter.Dispose();
+            Unsubscribe();
             TimerFinished = null;
             TimerPaused = null;
             TimerResumed = null;

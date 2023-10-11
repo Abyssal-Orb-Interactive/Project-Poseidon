@@ -3,7 +3,7 @@ using Base.Graphics;
 using UnityEngine;
 using Grid = Source.Battle_Field.Grid;
 
-namespace Source.Graphics
+namespace Source.Graphics.UI
 {
     public class GridVisualizer : CollectionGameObjectsVisualizer<List<GameObject>>
     {
