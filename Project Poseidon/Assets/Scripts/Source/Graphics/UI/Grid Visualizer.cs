@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Base.Graphics;
 using Source.Battle_Field;
 using UnityEngine;
-using Grid = Source.Battle_Field.Grid;
 
 namespace Source.Graphics.UI
 {
@@ -19,7 +20,16 @@ namespace Source.Graphics.UI
 
         public override void Visualize()
         {
-            VisualizeGrid();
+            try
+            {
+                VisualizeGrid();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
         }
 
         private void VisualizeGrid()
@@ -28,7 +38,7 @@ namespace Source.Graphics.UI
             
             var cellRect = _cellPrefab.GetComponent<RectTransform>().rect;
             var cellSize = new Vector2(cellRect.width, cellRect.height);
-            
+           
             foreach (var coord in _grid.GetCoords())
             {
                 var cell = Instantiate(_cellPrefab,_container);
@@ -40,7 +50,6 @@ namespace Source.Graphics.UI
                 cell.GetComponent<RectTransform>().anchoredPosition = cellPosition;
             }
         }
-
         protected override void Dispose()
         {
             _grid = null;

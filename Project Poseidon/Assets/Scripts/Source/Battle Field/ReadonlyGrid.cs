@@ -8,7 +8,6 @@ namespace Source.Battle_Field
     {
         public abstract IReadonlyOpener GetExplosion();
         public abstract bool HasShip(Vector2Int coord);
-
         public abstract IEnumerable<IReadonlyCell> GetCells();
         public  abstract IEnumerable<Vector2Int> GetCoords();
         public abstract Vector2Int MaxCoord { get; protected set; }

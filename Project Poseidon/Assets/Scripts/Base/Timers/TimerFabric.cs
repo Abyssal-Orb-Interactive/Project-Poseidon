@@ -5,11 +5,18 @@ namespace Base.Timers
     public static class TimerFabric
     {
         private const float ONE_SECOND = 1f;
-        
-        private static readonly TimeInvoker _invoker = TimeInvoker.Instance;
 
+        private static TimeInvoker _invoker;
+
+        public static void Initialize(TimeInvoker invoker)
+        {
+            _invoker = invoker;
+        }
+        
         public static Timer Create(TimerType type, float delayTimeInSeconds)
         {
+            if (_invoker == null) throw new ArgumentException("Before creating timers, you must initialize TimerFabric");
+            
             Timer timer = type switch
             {
                 TimerType.FrameTimer => new FrameTimer(delayTimeInSeconds, _invoker.GetDeltaTime, _invoker),

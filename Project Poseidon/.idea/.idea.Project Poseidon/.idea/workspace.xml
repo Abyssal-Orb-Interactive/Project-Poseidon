@@ -5,39 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyOpener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IReadonlyOpener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/ReadonlyGrid.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/ReadonlyGrid.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/CameraMover.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/CameraMover.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Players.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Players.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/CounterBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/CounterBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/GitIntegration/SmartMergeRegistrar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/GitIntegration/SmartMergeRegistrar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/UnityEntityVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/UnityEntityVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/FrameTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/FrameTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/SecondTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/SecondTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimeInvoker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimeInvoker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/Timer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledFrameTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledFrameTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledSecondTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/UnscaledSecondTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/AmmoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/AmmoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/IOpener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Opener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/OpensTypeIdentifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/Cell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/Cell.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimerFabric.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Timers/TimerFabric.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridFabric.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/GridFabric.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/ReadonlyGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/ReadonlyGrid.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Grid Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Grid Visualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/HitMarker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/HitMarker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/Marker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/Marker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/MarkersVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/MarkersVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/MissMarker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/MissMarker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/ShipExplosionMarker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/Markers/ShipExplosionMarker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/TimerLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/TimerLine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Input/ShootHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipExplosion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +152,8 @@
       <workItem from="1696596558232" duration="34650000" />
       <workItem from="1696770847407" duration="1767000" />
       <workItem from="1696840391484" duration="32490000" />
-      <workItem from="1697018337559" duration="7365000" />
+      <workItem from="1697018337559" duration="17476000" />
+      <workItem from="1697044200929" duration="14826000" />
     </task>
     <servers />
   </component>
