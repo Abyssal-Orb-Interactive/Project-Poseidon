@@ -172,8 +172,8 @@ MonoBehaviour:
   _fleet: {fileID: 11400000, guid: a085754bd63a38c488ba489135dfa9c4, type: 2}
   _cameraMover: {fileID: 330585548}
   _cameraTargets:
-  - {fileID: 233100835}
   - {fileID: 1226319352}
+  - {fileID: 233100835}
   _visualizer: {fileID: 92364127}
 --- !u!4 &92364126
 Transform:
@@ -208,7 +208,9 @@ MonoBehaviour:
   _shipVisualizers:
   - {fileID: 233100836}
   - {fileID: 1226319351}
-  _markersVisualizer: {fileID: 723279861}
+  _markersVisualizers:
+  - {fileID: 723279861}
+  - {fileID: 1373108726}
   _markersPack: {fileID: 11400000, guid: 252d9a929d6f576439c5b5b11bb7b50d, type: 2}
   _timerLine: {fileID: 440911887}
 --- !u!1 &102399734
@@ -237,7 +239,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102399734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0000009536743}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -245,7 +247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000000017030288}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 90, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &102399736
@@ -1544,7 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 1373108725}
-  _fieldOffset: {x: 4.5, y: 4.5}
+  _fieldOffset: {x: 24.5, y: 4.5}
   _cellOffset: {x: 10, y: 10}
 --- !u!1 &1443402970
 GameObject:

@@ -28,7 +28,7 @@ namespace Source
                 _ammoController = new AmmoController();
                 _ammoController.AmmunitionIsEmpty += OnAmmoEnded;
                 
-                _actions.Base.Shoot.performed += _ => Shoot(_players.GetCurrentPlayer().GetBattlefield());
+                _actions.Base.Shoot.performed += _ => Shoot(_players.GetPlayerByID(_players.GetNextPlayerID()).GetBattlefield());
 
                 _visualizer = visualizer;
         }
@@ -53,15 +53,15 @@ namespace Source
                 _ammoController.TakeAmmo();
             }
             
-            _visualizer.VisualizeMarker(shootCoord, type);
+            _visualizer.VisualizeMarker(shootCoord, type, _players);
             OnShot();
         }
 
         private void OnAmmoEnded()
         {
-            _actions.Base.Shoot.performed -= _ =>  Shoot(_players.GetCurrentPlayer().GetBattlefield());
+            _actions.Base.Shoot.performed -= _ =>  Shoot(_players.GetPlayerByID(_players.GetNextPlayerID()).GetBattlefield());
             AmmoEnded?.Invoke();
-            _actions.Base.Shoot.performed += _ =>  Shoot(_players.GetCurrentPlayer().GetBattlefield());
+            _actions.Base.Shoot.performed += _ =>  Shoot(_players.GetPlayerByID(_players.GetNextPlayerID()).GetBattlefield());
         }
         
         public void SubscribeOnAmmoEnded(Action action)

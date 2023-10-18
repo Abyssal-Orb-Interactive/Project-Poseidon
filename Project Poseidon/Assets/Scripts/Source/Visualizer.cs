@@ -13,7 +13,7 @@ namespace Source
     {
         [SerializeField] private GridVisualizer[] _gridVisualizers;
         [SerializeField] private ShipVisualizer[] _shipVisualizers;
-        [SerializeField] private MarkersVisualizer _markersVisualizer;
+        [SerializeField] private MarkersVisualizer[] _markersVisualizers;
         [SerializeField] private MarkersPack _markersPack;
         [SerializeField] private TimerLine _timerLine;
 
@@ -23,39 +23,37 @@ namespace Source
             _shipVisualizers[(int) player].Visualize();
         }
 
-        public void VisualizeMarker(Vector2Int coord, OpenType type)
+        public void VisualizeMarker(Vector2Int coord, OpenType type, PlayersManager manager)
         {
-            _markersVisualizer.AddMarker(coord, type);
-            _markersVisualizer.Visualize();
+            _markersVisualizers[(int)manager.GetNextPlayerID()].AddMarker(coord, type);
+            _markersVisualizers[(int)manager.GetNextPlayerID()].Visualize();
         }
 
         public void VisualizeHitOnShip(Vector2Int coord, PlayersManager manager)
         {
-            _shipVisualizers[(int)manager.GetCurrentPlayerID()].VisualizeHit(coord);
+            _shipVisualizers[(int)manager.GetNextPlayerID()].VisualizeHit(coord);
         }
-        
+
         public void InitializeGridVisualizers(PlayersManager manager, Players playerID)
         {
-            InitializeAndVisualizeGrid(manager.GetPlayerByID(playerID).GetBattlefield(), _gridVisualizers[(int) playerID]);
-        }
-        private void InitializeAndVisualizeGrid(Battlefield battlefield, GridVisualizer gridVisualizer)
-        {
-            var grid = battlefield.GetGrid();
-            grid.ShipExplosion += () => VisualizeExplosionMarkers(battlefield);
-            gridVisualizer.Initialize(grid);
-            gridVisualizer.Visualize();
+            var player = manager.GetPlayerByID(playerID);
+            var grid = player.GetBattlefield().GetGrid();
+            grid.ShipExplosion += () => VisualizeExplosionMarkers(player.GetBattlefield(), playerID);
+            _gridVisualizers[(int)playerID].Initialize(grid);
+            _gridVisualizers[(int)playerID].Visualize();
             MarkerFabric.Initialize(_markersPack);
         }
-        
-        private void VisualizeExplosionMarkers(Battlefield battlefield)
+
+        private void VisualizeExplosionMarkers(Battlefield battlefield,Players playerID)
         {
+            
             var grid = battlefield.GetGrid();
             var opensTypeIdentifier = battlefield.GetOpensTypeIdentifier();
             
             var opener = grid.GetExplosion();
             var coords = (IReadOnlyList<Vector2Int>)opener.GetOpenInformation();
-            if(grid.TryOpenCells((IOpener)opener)) _markersVisualizer.AddMarkers(coords, new List<OpenType>(opensTypeIdentifier.GetTypes(coords, (IOpener)opener)));
-            _markersVisualizer.Visualize();
+            if(grid.TryOpenCells((IOpener)opener)) _markersVisualizers[(int)playerID].AddMarkers(coords, new List<OpenType>(opensTypeIdentifier.GetTypes(coords, (IOpener)opener)));
+            _markersVisualizers[(int) playerID].Visualize();
         }
 
         public void InitializeTimerLine(TimeToTurnTracker tracker)
