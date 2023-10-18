@@ -11,7 +11,7 @@ namespace Source.Graphics.UI
     {
         [SerializeField] private Image _timeBar;
         [SerializeField] private TextMeshProUGUI _timerText;
-        private Timer _timer;
+        private TimeToTurnTracker _timer;
         private float _remainingTimeInPercentage;
 
         private void OnValidate()
@@ -20,31 +20,30 @@ namespace Source.Graphics.UI
             _timerText ??= GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        public void Initialize(Timer timer)
+        public void Initialize(TimeToTurnTracker timer)
         {
             _timer = timer;
             Subscribe();
-            _timer.TimerPaused += Unsubscribe;
-            _timer.TimerResumed += Subscribe;
-            _timer.TimerFinished += Unsubscribe;
-            _timerText.text = _timer.DelayTimeInSeconds.ToString("F2", CultureInfo.InvariantCulture);
+            _timer.SubscribeToTimePaused(Unsubscribe);
+            _timer.SubscribeToTimeResumed(Subscribe);
+            _timerText.text = _timer.DelayTime.ToString("F2", CultureInfo.InvariantCulture);
         }
 
-        public void UpdateTimeBar()
+        private void UpdateTimeBar()
         {
-            _remainingTimeInPercentage = _timer.RemainingTime / _timer.DelayTimeInSeconds;
+            _remainingTimeInPercentage = _timer.RemainingTime / _timer.DelayTime;
             _timeBar.fillAmount = _remainingTimeInPercentage;
             _timerText.text = _timer.RemainingTime.ToString("F2", CultureInfo.InvariantCulture);
         }
 
         private void Subscribe()
         {
-            _timer.TimerTick += UpdateTimeBar;
+            _timer.SubscribeToTimeTicked(UpdateTimeBar);
         }
 
         private void Unsubscribe()
         {
-            _timer.TimerTick -= UpdateTimeBar;
+            _timer.UnSubscribeToTimeTicked(UpdateTimeBar);
         }
 
         private void OnDestroy()

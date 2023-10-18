@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 92364126}
   - component: {fileID: 92364125}
   - component: {fileID: 92364124}
+  - component: {fileID: 92364127}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -166,17 +167,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090ffc428253c4143822c9b17b1b1b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstPlayerGridVisualizer: {fileID: 695284446}
-  _secondPlayerGridVisualizer: {fileID: 2101047583}
-  _markersVisualizer: {fileID: 723279861}
-  _firstPlayrtShipVisualizer: {fileID: 233100836}
-  _secondPlayrtShipVisualizer: {fileID: 1226319351}
   _camera: {fileID: 330585545}
-  _markersPack: {fileID: 11400000, guid: 252d9a929d6f576439c5b5b11bb7b50d, type: 2}
   _shipsPack: {fileID: 11400000, guid: 0806dd20fec924e4091f2e57d5b2c3dc, type: 2}
   _fleet: {fileID: 11400000, guid: a085754bd63a38c488ba489135dfa9c4, type: 2}
-  _timerLine: {fileID: 440911887}
   _cameraMover: {fileID: 330585548}
+  _cameraTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  _visualizer: {fileID: 92364127}
 --- !u!4 &92364126
 Transform:
   m_ObjectHideFlags: 0
@@ -192,6 +190,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &92364127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92364123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e36334841dc4698a3469138ff800083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridVisualizers:
+  - {fileID: 695284446}
+  - {fileID: 2101047583}
+  _shipVisualizers:
+  - {fileID: 233100836}
+  - {fileID: 1226319351}
+  _markersVisualizer: {fileID: 723279861}
+  _markersPack: {fileID: 11400000, guid: 252d9a929d6f576439c5b5b11bb7b50d, type: 2}
+  _timerLine: {fileID: 440911887}
 --- !u!1 &102399734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1332,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097022841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1323,7 +1342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 16}
+  m_AnchoredPosition: {x: 0, y: 13}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1138501391
