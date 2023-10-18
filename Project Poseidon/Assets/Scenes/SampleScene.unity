@@ -172,8 +172,8 @@ MonoBehaviour:
   _fleet: {fileID: 11400000, guid: a085754bd63a38c488ba489135dfa9c4, type: 2}
   _cameraMover: {fileID: 330585548}
   _cameraTargets:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 233100835}
+  - {fileID: 1226319352}
   _visualizer: {fileID: 92364127}
 --- !u!4 &92364126
 Transform:
@@ -769,7 +769,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalPosition: {x: 0, y: 150, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _activeTarget: {fileID: 0}
-  _cameraOffset: {x: 0, y: 100, z: 0}
+  _cameraOffset: {x: 0, y: 150, z: 0}
   _smoothingSpeed: 5
 --- !u!1 &410087039
 GameObject:
@@ -1332,7 +1332,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097022841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 230}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
