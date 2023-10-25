@@ -5,7 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Adaptive Performance.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Adaptive Performance/AdaptivePerformanceGeneralSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Adaptive Performance/AdaptivePerformanceGeneralSettings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Adaptive Performance/Settings.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Adaptive Performance/Settings/Simulator Provider Settings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Adaptive Performance/Settings/Simulator Provider Settings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AddressableAssetSettings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroupTemplates.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Built In Data.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Built In Data.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Default Local Group.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Default Ships.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Default Ships.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Built In Data_PlayerDataGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Built In Data_PlayerDataGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Ships_BundledAssetGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Ships_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Ships_ContentUpdateGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/AssetGroups/Schemas/Default Ships_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptVirtualMode.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DataBuilders/BuildScriptVirtualMode.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DefaultObject.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/AddressableAssetsData/DefaultObject.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +115,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Apps\Unity3D\2022.3.8f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -77,7 +123,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Apps\Unity3D\2022.3.8f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\froll\OneDrive\Документы\GitHub\Project-Poseidon\Project Poseidon" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -141,6 +187,7 @@
       <workItem from="1697195222753" duration="4164000" />
       <workItem from="1697356146725" duration="18887000" />
       <workItem from="1697640953575" duration="2624000" />
+      <workItem from="1698066800018" duration="802000" />
     </task>
     <servers />
   </component>

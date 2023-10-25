@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Source.Ships;
 using Source.Turn_State_Machine;
 using UnityEngine;
 
@@ -10,11 +9,10 @@ namespace Source
     {
         [Header("Game Elements")] 
         [SerializeField] private Camera _camera;
-        [SerializeField] private ShipsPack _shipsPack;
-        [SerializeField] private Fleet _fleet;
         [SerializeField] private CameraMover _cameraMover;
         [SerializeField] private Transform[] _cameraTargets;
         [SerializeField] private Visualizer _visualizer;
+        [SerializeField] private ShipsManager _shipsManager;
         
         private PlayersManager _playersManager;
         private TimeToTurnTracker _timeToTurnTracker;
@@ -49,20 +47,8 @@ namespace Source
             _cameraMover.ChangeMovingTarget(_playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget());
             _visualizer.InitializeGridVisualizers(_playersManager, Players.First);
             _visualizer.InitializeGridVisualizers(_playersManager, Players.Second);
-            PlaceShips();
+            _shipsManager.PlaceShips(_playersManager);
             InitializeTimer();
-        }
-        
-        private void PlaceShips()
-        {
-            ShipFabric.Initialize(_shipsPack);
-            var firstPlayerShipPlacer = new ShipPlacer(_playersManager.GetPlayerByID(Players.First).GetBattlefield().GetGrid(), _fleet);
-            var secondPlayerShipPlacer = new ShipPlacer(_playersManager.GetPlayerByID(Players.Second).GetBattlefield().GetGrid(), _fleet);
-            firstPlayerShipPlacer.TryPlaceShips();
-            secondPlayerShipPlacer.TryPlaceShips();
-            
-            _visualizer.VisualizeShips(Players.First, firstPlayerShipPlacer);
-            _visualizer.VisualizeShips(Players.Second, secondPlayerShipPlacer);
         }
         
         private void InitializeTimer()
