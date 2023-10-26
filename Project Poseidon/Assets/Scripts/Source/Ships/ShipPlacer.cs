@@ -28,15 +28,10 @@ namespace Source.Ships
             {
                 for (var triesCounter = 0; triesCounter < MAX_TRIES; triesCounter++)
                 {
-                    var shipLogical = ShipFabric.Create(ship.Type);
                     var randomOrientation = (Orientation)Random.Range(0, Enum.GetValues(typeof(Orientation)).Length);
-                    var coord = RandomCoordForOrientation(randomOrientation, ship.Size);
-                    shipLogical.SetPosition(coord);
-                    shipLogical.Orientation = randomOrientation;
 
-                    if (!TryPlaceShip(coord, ref shipLogical)) continue;
+                    if (!TryPlaceShip(randomOrientation, ship)) continue;
                     
-                    _ships.Add(shipLogical);
                     break;
                 }
             }
@@ -60,16 +55,22 @@ namespace Source.Ships
             return new Vector2Int(x, y);
         }
         
-        private bool TryPlaceShip(Vector2Int bowCoord, ref ShipLogicalRepresentation ship)
+        public bool TryPlaceShip(Orientation orientation, Ship ship)
         {
-            ship.SetPosition(bowCoord);
+            var shipLogical = ShipFabric.Create(ship.Type);
+            
+            var bowCoord = RandomCoordForOrientation(orientation, ship.Size);
+            shipLogical.SetPosition(bowCoord);
+            shipLogical.Orientation = orientation;
 
-            if (HasShipEntersInAnotherShip(ship) || HasShipEntersAnyRestrictedArea(ship))
+            if (HasShipEntersInAnotherShip(shipLogical) || HasShipEntersAnyRestrictedArea(shipLogical))
             {
                 return false;
             }
-    
-            return _grid.TryPlaceShip(ship.SegmentsCoords as IReadOnlyCollection<Vector2Int>, ship);
+
+            var result = _grid.TryPlaceShip(shipLogical.SegmentsCoords as IReadOnlyCollection<Vector2Int>, shipLogical);
+            if(result) _ships.Add(shipLogical);
+            return result;
         }
 
         private bool HasShipEntersAnyRestrictedArea(in IReadonlyLogicalRepresentation ship)

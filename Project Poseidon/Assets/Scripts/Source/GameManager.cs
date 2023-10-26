@@ -47,7 +47,8 @@ namespace Source
             _cameraMover.ChangeMovingTarget(_playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget());
             _visualizer.InitializeGridVisualizers(_playersManager, Players.First);
             _visualizer.InitializeGridVisualizers(_playersManager, Players.Second);
-            _shipsManager.PlaceShips(_playersManager);
+            _shipsManager.Initialize(_playersManager);
+            //_shipsManager.PlaceShips();
             InitializeTimer();
         }
         
