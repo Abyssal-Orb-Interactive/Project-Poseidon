@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Source.Input;
 using Source.Turn_State_Machine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +18,8 @@ namespace Source
         [SerializeField] private GameObject _sgipsPlacerMenu;
         [SerializeField] private GameObject _battleMenu;
         [SerializeField] private GameObject _menu;
+        [SerializeField] private GameObject _winnerWindow;
+        [SerializeField] private TextMeshProUGUI _winnersText;
         [SerializeField] private float _turnTime = 10f;
         [SerializeField] private Vector2Int _firstPlayerFieldOffset = new (0,0);
         [SerializeField] private Vector2Int _secondPlayerFieldOffset = new (20, 0);
@@ -29,7 +31,6 @@ namespace Source
 
         private Transform _firstFieldCameraTarget;
         private Transform _secondFieldCameraTarget;
-        public event Action TurnEnded;
 
         private void Start()
         {
@@ -56,7 +57,9 @@ namespace Source
             _timeToTurnTracker = new TimeToTurnTracker(_turnTime);
             
             var first = new Player(_firstPlayerFieldOffset, _cameraTargets[(int)Players.First]);
+            first.GetBattlefield().GetGrid().AllShipsDestroyed += OnWin;
             var second = new Player(_secondPlayerFieldOffset, _cameraTargets[(int)Players.Second]);
+            second.GetBattlefield().GetGrid().AllShipsDestroyed += OnWin;
             _playersManager = new PlayersManager(new List<Player>{ first, second });
             
             _visualizer.InitializeGridVisualizers(_playersManager, Players.First);
@@ -76,7 +79,6 @@ namespace Source
             _playersManager.PassToNextPlayer();
             _visualizer.MakeShipsVisible((int)_playersManager.GetCurrentPlayerID());
             _cameraMover.ChangeMovingTarget(_playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget());
-            TurnEnded?.Invoke();
             _timeToTurnTracker.Restart();
         }
 
@@ -131,6 +133,15 @@ namespace Source
         {
             _menu.SetActive(true);
             _timeToTurnTracker.Pause();
+        }
+
+        private void OnWin()
+        {
+            _battleMenu.SetActive(false);
+            _winnerWindow.SetActive(true);
+            Pause();
+
+            _winnersText.text = _playersManager.GetCurrentPlayerID() == Players.First ? "First Player Wins" : "Second Player Wins";
         }
     }
 }

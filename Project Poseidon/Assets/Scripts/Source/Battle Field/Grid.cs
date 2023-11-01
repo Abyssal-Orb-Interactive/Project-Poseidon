@@ -12,8 +12,10 @@ namespace Source.Battle_Field
         private IReadOnlyDictionary<Vector2Int, Cell> _cells;
         private ShipExplosion _currentExplosionZone;
         private bool _isExplosionReadyToFire;
+        private int _numberOfShips;
 
         public event ExplosionContext ShipExplosion;
+        public event Action AllShipsDestroyed;
 
         public Grid(IDictionary<Vector2Int, Cell> cells)
         {
@@ -117,6 +119,7 @@ namespace Source.Battle_Field
                 
                 
             SubscribeToExplosion(ship);
+            _numberOfShips++;
             return true;
         }
 
@@ -164,6 +167,9 @@ namespace Source.Battle_Field
             _isExplosionReadyToFire = true;
             
             ShipExplosion!.Invoke();
+
+            _numberOfShips--;
+            if(_numberOfShips <= 0) AllShipsDestroyed?.Invoke();
 
         }
         
