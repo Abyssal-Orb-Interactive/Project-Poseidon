@@ -60,5 +60,28 @@ namespace Source
         {
             _timerLine.Initialize(tracker);
         }
+
+        public void MakeShipsVisible(int playerID)
+        {
+            _shipVisualizers[playerID].MakeVisible(); 
+        }
+
+        public void MakeShipsInvisible(int playerID)
+        {
+            _shipVisualizers[playerID].MakeInvisible(); 
+        }
+
+        public void ClearShipsVisuals(int playerID)
+        {
+            _shipVisualizers[playerID].ClearVisual();
+        }
+
+        public void DeleteShipVisual(IReadonlyLogicalRepresentation ship, int playerID)
+        {
+            foreach (var coord in ship.SegmentsCoords)
+            {
+                _shipVisualizers[playerID].DeleteSegmentVisual(coord);
+            }
+        }
     }
 }

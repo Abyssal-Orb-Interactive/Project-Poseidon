@@ -8,6 +8,8 @@ namespace Base.Graphics
     {
         public override void CleanVisual()
         {
+            if(Visual == null) return;
+            
             foreach (var key in Visual.Keys.ToList())
             {
                 Visual[key].SetActive(false);

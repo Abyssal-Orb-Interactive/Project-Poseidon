@@ -30,7 +30,7 @@ namespace Source.Ships
                 {
                     var randomOrientation = (Orientation)Random.Range(0, Enum.GetValues(typeof(Orientation)).Length);
 
-                    if (!TryPlaceShip(randomOrientation, ship)) continue;
+                    if (!TryPlaceShipRandomly(randomOrientation, ship)) continue;
                     
                     break;
                 }
@@ -55,7 +55,7 @@ namespace Source.Ships
             return new Vector2Int(x, y);
         }
         
-        public bool TryPlaceShip(Orientation orientation, Ship ship)
+        public bool TryPlaceShipRandomly(Orientation orientation, Ship ship)
         {
             var shipLogical = ShipFabric.Create(ship.Type);
             
@@ -65,6 +65,29 @@ namespace Source.Ships
 
             if (HasShipEntersInAnotherShip(shipLogical) || HasShipEntersAnyRestrictedArea(shipLogical))
             {
+                return false;
+            }
+
+            var result = _grid.TryPlaceShip(shipLogical.SegmentsCoords as IReadOnlyCollection<Vector2Int>, shipLogical);
+            if(result) _ships.Add(shipLogical);
+            return result;
+        }
+
+        public void DeleteShip(IReadonlyLogicalRepresentation ship)
+        {
+            _ships.Remove((ShipLogicalRepresentation)ship);
+        }
+        
+        public bool TryPlaceShip(Orientation orientation, Ship ship, Vector2Int bowCoord)
+        {
+            var shipLogical = ShipFabric.Create(ship.Type);
+            
+            shipLogical.SetPosition(bowCoord);
+            shipLogical.Orientation = orientation;
+
+            if (HasShipEntersInAnotherShip(shipLogical) || HasShipEntersAnyRestrictedArea(shipLogical))
+            {
+                shipLogical.Dispose();
                 return false;
             }
 
@@ -93,8 +116,19 @@ namespace Source.Ships
             return _ships;
         }
 
+        public void DisposeAllShips()
+        {
+            foreach (var ship in _ships)
+            {
+                ship.Dispose();
+            }
+
+            _ships = new List<ShipLogicalRepresentation>();
+        }
+
         public void Dispose()
         {
+            DisposeAllShips();
             _grid.Dispose();
             _ships = null;
             _grid = null;

@@ -19,6 +19,7 @@ namespace Source.Ships
         private HashSet<Vector2Int> _segmentsCoords;
         private HashSet<Vector2Int> _restrictedAreaCoords;
         private readonly CounterInt _healthPointsCounter;
+        private Orientation _orientation = Orientation.Horizontal;
 
         public event ExplosionContext Explosion;
         
@@ -36,8 +37,17 @@ namespace Source.Ships
         public IEnumerable<Vector2Int> RestrictedAreaCoords => _restrictedAreaCoords;
         public int HealthPoints => _healthPointsCounter.CurrentValue;
         public Vector2Int BowCoord { get; private set; }
-        public Orientation Orientation { get; set; } = Orientation.Vertical;
-        
+        public Orientation Orientation
+        {
+            get => _orientation;
+            set
+            {
+                _orientation = value;
+                RecalculateAllCoords();
+                
+            }
+        }
+
         public void SetPosition(Vector2Int bowCoord)
         {
             BowCoord = bowCoord;

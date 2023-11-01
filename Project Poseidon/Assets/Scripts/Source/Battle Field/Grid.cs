@@ -177,6 +177,14 @@ namespace Source.Battle_Field
             return Cells;
         }
 
+        public void DeleteShip(IReadonlyLogicalRepresentation ship)
+        {
+            foreach (var coord in ship.SegmentsCoords)
+            {
+                _cells[coord].TryDeleteShip(ship);
+            }   
+        }
+
         public void Clear()
         {
             _currentExplosionZone = null;

@@ -28,6 +28,18 @@ namespace Source.Battle_Field
             PlaceShip(ship);
             return true;
         }
+
+        public bool TryDeleteShip(IReadonlyLogicalRepresentation ship)
+        {
+            if (!HasShip) return false;
+            DeleteShip();
+            return true;
+        }
+
+        private void DeleteShip()
+        {
+            Ship = null;
+        }
         
         private void PlaceShip(IReadonlyLogicalRepresentation ship)
         {

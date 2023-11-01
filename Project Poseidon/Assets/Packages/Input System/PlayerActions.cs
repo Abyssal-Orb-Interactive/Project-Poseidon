@@ -35,6 +35,24 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""4fbe980e-a2bd-4d21-8c35-cc704abcd72d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Delete"",
+                    ""type"": ""Button"",
+                    ""id"": ""67fa5767-cd35-434e-9697-4422de44d8d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -46,6 +64,28 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1109beb-7c05-4ccf-aee4-3e02f0e29c1b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b6c1cb0-0163-4b4b-912e-30ec7debb993"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Delete"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -74,6 +114,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         // Base
         m_Base = asset.FindActionMap("Base", throwIfNotFound: true);
         m_Base_Shoot = m_Base.FindAction("Shoot", throwIfNotFound: true);
+        m_Base_Exit = m_Base.FindAction("Exit", throwIfNotFound: true);
+        m_Base_Delete = m_Base.FindAction("Delete", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -136,11 +178,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Base;
     private List<IBaseActions> m_BaseActionsCallbackInterfaces = new List<IBaseActions>();
     private readonly InputAction m_Base_Shoot;
+    private readonly InputAction m_Base_Exit;
+    private readonly InputAction m_Base_Delete;
     public struct BaseActions
     {
         private @PlayerActions m_Wrapper;
         public BaseActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_Base_Shoot;
+        public InputAction @Exit => m_Wrapper.m_Base_Exit;
+        public InputAction @Delete => m_Wrapper.m_Base_Delete;
         public InputActionMap Get() { return m_Wrapper.m_Base; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -153,6 +199,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
+            @Delete.started += instance.OnDelete;
+            @Delete.performed += instance.OnDelete;
+            @Delete.canceled += instance.OnDelete;
         }
 
         private void UnregisterCallbacks(IBaseActions instance)
@@ -160,6 +212,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
+            @Delete.started -= instance.OnDelete;
+            @Delete.performed -= instance.OnDelete;
+            @Delete.canceled -= instance.OnDelete;
         }
 
         public void RemoveCallbacks(IBaseActions instance)
@@ -189,5 +247,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     public interface IBaseActions
     {
         void OnShoot(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
+        void OnDelete(InputAction.CallbackContext context);
     }
 }

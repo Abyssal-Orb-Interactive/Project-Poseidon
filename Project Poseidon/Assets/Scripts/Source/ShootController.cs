@@ -57,6 +57,16 @@ namespace Source
             OnShot();
         }
 
+        public void OnPause()
+        {
+            _actions.Disable();
+        }
+
+        public void OnResume()
+        {
+            _actions.Enable();
+        }
+
         private void OnAmmoEnded()
         {
             _actions.Base.Shoot.performed -= _ =>  Shoot(_players.GetPlayerByID(_players.GetNextPlayerID()).GetBattlefield());
@@ -98,6 +108,11 @@ namespace Source
         public void UnSubscribeOnShot(Action action)
         {
             Shot -= action;
+        }
+
+        public PlayerActions GetActionsMap()
+        {
+            return _actions;
         }
         
         public void Dispose()

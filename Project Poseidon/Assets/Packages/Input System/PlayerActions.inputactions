@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "PlayerActions",
     "maps": [
         {
             "name": "Base",
@@ -9,6 +9,24 @@
                     "name": "Shoot",
                     "type": "Button",
                     "id": "35418f25-3a5a-4e97-a55a-6b0b272041d0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "4fbe980e-a2bd-4d21-8c35-cc704abcd72d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Delete",
+                    "type": "Button",
+                    "id": "67fa5767-cd35-434e-9697-4422de44d8d2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -24,6 +42,28 @@
                     "processors": "",
                     "groups": "Mouse and Keyboard",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1109beb-7c05-4ccf-aee4-3e02f0e29c1b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b6c1cb0-0163-4b4b-912e-30ec7debb993",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Delete",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

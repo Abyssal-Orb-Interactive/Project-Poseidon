@@ -10,6 +10,11 @@ namespace Source.Graphics.UI
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
       }
 
+      public void BackToMainMenu()
+      {
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+      }
+
       public void QuiteGame()
       {
          Application.Quit();
