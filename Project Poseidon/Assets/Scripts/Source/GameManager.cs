@@ -4,7 +4,6 @@ using Source.Input;
 using Source.Turn_State_Machine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Source
 {
@@ -27,6 +26,9 @@ namespace Source
         private TimeToTurnTracker _timeToTurnTracker;
         private ShootController _shootController;
         private PlayerActions _actions;
+
+        private Transform _firstFieldCameraTarget;
+        private Transform _secondFieldCameraTarget;
         public event Action TurnEnded;
 
         private void Start()
@@ -62,6 +64,10 @@ namespace Source
             
             _shipsManager.Initialize(_playersManager);
             _shipsManager.SubscribeToContinueDesired(PrepareBattle);
+
+            _firstFieldCameraTarget = _playersManager.GetPlayerByID(_playersManager.GetNextPlayerID()).GetBattlefield()
+                .GetCameraTarget();
+            _secondFieldCameraTarget = _playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget();
         }
 
         private void OnEndTurn()
@@ -72,6 +78,16 @@ namespace Source
             _cameraMover.ChangeMovingTarget(_playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget());
             TurnEnded?.Invoke();
             _timeToTurnTracker.Restart();
+        }
+
+        public void MoveCameraToFirstField()
+        {
+            _cameraMover.ChangeMovingTarget(_firstFieldCameraTarget);
+        }
+
+        public void MoveCameraToSecondField()
+        {
+            _cameraMover.ChangeMovingTarget(_secondFieldCameraTarget);
         }
 
         private void PrepareBattle()

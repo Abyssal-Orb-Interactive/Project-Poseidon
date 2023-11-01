@@ -6,32 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="23a473c4-fd0e-4681-ae8f-03b5d6b170f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Poseidon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/Input System/PlayerActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/Input System/PlayerActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/Input System/PlayerActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/Input System/PlayerActions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Cube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Models/Cube.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/DictionaryGameObjectsVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Graphics/DictionaryGameObjectsVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Cell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Battle Field/Grid.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/ShipVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Graphics/UI/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipLogicalRepresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Ships/ShipPlacer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/ShipsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/ShipsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/ShootController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/ShootController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/FirstPlayerTurn.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/FirstPlayerTurn.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Players.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Players.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/SecondPlayerTurn.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/SecondPlayerTurn.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn Machine.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Turn State Machine/Turn State.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Source/Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Source/Visualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +142,7 @@
       <workItem from="1697640953575" duration="2624000" />
       <workItem from="1698066800018" duration="802000" />
       <workItem from="1698232666287" duration="13505000" />
-      <workItem from="1698321298742" duration="31487000" />
+      <workItem from="1698321298742" duration="32244000" />
     </task>
     <servers />
   </component>
