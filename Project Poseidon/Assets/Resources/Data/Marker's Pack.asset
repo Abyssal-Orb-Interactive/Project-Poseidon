@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292c07b0eed398546b8f88fb5c9a79ad, type: 3}
+  m_Name: Marker's Pack
+  m_EditorClassIdentifier: 
+  _missMarker: {fileID: 9181765328709943263, guid: d3938741c7a68414e82fb1bdd8bf9e05,
+    type: 3}
+  _hitMarker: {fileID: 6164731749758851258, guid: 77d538bd59049fa46a57d6a334c4ac8e,
+    type: 3}
+  _shipExplosionMarker: {fileID: 2354525629935566333, guid: 9c0734158a602b246942660249878b70,
+    type: 3}

@@ -1,24 +1,147 @@
-using System;
+using System.Collections.Generic;
+using Source.Input;
+using Source.Turn_State_Machine;
+using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+using UnityEngine.InputSystem;
 
 namespace Source
 {
     public class GameManager : MonoBehaviour
     {
-        public event Action TurnEnded;
+        [Header("Game Elements")] 
+        [SerializeField] private Camera _camera;
+        [SerializeField] private CameraMover _cameraMover;
+        [SerializeField] private Transform[] _cameraTargets;
+        [SerializeField] private Visualizer _visualizer;
+        [SerializeField] private ShipsManager _shipsManager;
+        [SerializeField] private GameObject _sgipsPlacerMenu;
+        [SerializeField] private GameObject _battleMenu;
+        [SerializeField] private GameObject _menu;
+        [SerializeField] private GameObject _winnerWindow;
+        [SerializeField] private TextMeshProUGUI _winnersText;
+        [SerializeField] private float _turnTime = 10f;
+        [SerializeField] private Vector2Int _firstPlayerFieldOffset = new (0,0);
+        [SerializeField] private Vector2Int _secondPlayerFieldOffset = new (20, 0);
+        
+        private PlayersManager _playersManager;
+        private TimeToTurnTracker _timeToTurnTracker;
+        private ShootController _shootController;
+        private PlayerActions _actions;
 
+        private Transform _firstFieldCameraTarget;
+        private Transform _secondFieldCameraTarget;
+
+        private void Start()
+        {
+            InitializeGameComponents();
+        }
+        
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                EndTurn();
-            }
+            UpdateGameElements();
+        }
+        
+        private void UpdateGameElements()
+        {
+            _timeToTurnTracker.UpdateTime();
+            _cameraMover.Move();
+            _shipsManager.UpdateGhostPosition(MousePositionCalculator.CalculateMousePosition(Mouse.current.position.ReadValue(), _camera));
+        }
+        
+        private void InitializeGameComponents()
+        {
+            _actions = new PlayerActions();
+            _actions.Enable();
+            _actions.Base.Exit.performed += _ => OnExit();
+            _timeToTurnTracker = new TimeToTurnTracker(_turnTime);
+            
+            var first = new Player(_firstPlayerFieldOffset, _cameraTargets[(int)Players.First]);
+            first.GetBattlefield().GetGrid().AllShipsDestroyed += OnWin;
+            var second = new Player(_secondPlayerFieldOffset, _cameraTargets[(int)Players.Second]);
+            second.GetBattlefield().GetGrid().AllShipsDestroyed += OnWin;
+            _playersManager = new PlayersManager(new List<Player>{ first, second });
+            
+            _visualizer.InitializeGridVisualizers(_playersManager, Players.First);
+            _visualizer.InitializeGridVisualizers(_playersManager, Players.Second);
+            
+            _shipsManager.Initialize(_playersManager);
+            _shipsManager.SubscribeToContinueDesired(PrepareBattle);
+
+            _firstFieldCameraTarget = _playersManager.GetPlayerByID(_playersManager.GetNextPlayerID()).GetBattlefield()
+                .GetCameraTarget();
+            _secondFieldCameraTarget = _playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget();
         }
 
-        private void EndTurn()
+        private void OnEndTurn()
         {
-            TurnEnded?.Invoke();
+            _visualizer.MakeShipsInvisible((int)_playersManager.GetCurrentPlayerID());
+            _playersManager.PassToNextPlayer();
+            _visualizer.MakeShipsVisible((int)_playersManager.GetCurrentPlayerID());
+            _cameraMover.ChangeMovingTarget(_playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget());
+            _timeToTurnTracker.Restart();
+        }
+
+        public void MoveCameraToFirstField()
+        {
+            _cameraMover.ChangeMovingTarget(_firstFieldCameraTarget);
+        }
+
+        public void MoveCameraToSecondField()
+        {
+            _cameraMover.ChangeMovingTarget(_secondFieldCameraTarget);
+        }
+
+        private void PrepareBattle()
+        {
+            _cameraMover.ChangeMovingTarget(_playersManager.GetCurrentPlayer().GetBattlefield().GetCameraTarget());
+            _shipsManager.SubscribeToContinueDesired(StartBattle);
+        }
+
+        private void StartBattle()
+        {
+            _sgipsPlacerMenu.SetActive(false);
+            _battleMenu.SetActive(true);
+            _shootController = new ShootController(_camera, _playersManager, _visualizer);
+            _shootController.SubscribeOnAmmoEnded(OnEndTurn);
+            _shootController.SubscribeOnHit(_timeToTurnTracker.Restart);
+            _visualizer.MakeShipsInvisible((int)Players.Second);
+            
+            InitializeTimer(); 
+        }
+        
+        private void InitializeTimer()
+        {
+            _timeToTurnTracker.SubscribeToTimeToTurnEnded(OnEndTurn);
+            _visualizer.InitializeTimerLine(_timeToTurnTracker);
+            _timeToTurnTracker.SubscribeToTimePaused(_shootController.OnPause);
+            _timeToTurnTracker.SubscribeToTimeResumed(_shootController.OnResume);
+            _timeToTurnTracker.Start();
+        }
+
+        public void Pause()
+        {
+            _timeToTurnTracker.Pause();
+        }
+
+        public void Resume()
+        {
+            _timeToTurnTracker.Resume();
+        }
+
+        private void OnExit()
+        {
+            _menu.SetActive(true);
+            _timeToTurnTracker.Pause();
+        }
+
+        private void OnWin()
+        {
+            _battleMenu.SetActive(false);
+            _winnerWindow.SetActive(true);
+            Pause();
+
+            _winnersText.text = _playersManager.GetCurrentPlayerID() == Players.First ? "First Player Wins" : "Second Player Wins";
         }
     }
 }

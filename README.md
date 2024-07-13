@@ -1,2 +1,2 @@
 # Project-Poseidon
-Modernization of classical Naval Battle
+Implementation of classical Naval Battle
